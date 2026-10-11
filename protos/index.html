@@ -1,0 +1,489 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>iPad5,2 NonUI 12H60160o</title>
+<style>
+  /* Layout: single reading column, fixed-width "record" blocks for machine data,
+     prose for commentary. Monospace for every verbatim artifact value. */
+  :root {
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --surface-2: #eceae3;
+    --fg: #1a1a17;
+    --fg-dim: #5c5a51;
+    --line: #d9d6cc;
+    --accent: #7a4bd0;        /* "purple" — Apple's internal codename for pre-production builds */
+    --accent-dim: #ede6fa;
+    --flag: #b4471f;          /* unconfirmed / caution */
+    --flag-dim: #f6e3da;
+    --ok: #3a6a3a;
+    --mono: "SFMono-Regular", ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+   /* --serif: "Newsreader", Georgia, "Times New Roman", serif; */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141310;
+      --surface: #1d1c18;
+      --surface-2: #26241f;
+      --fg: #eceae3;
+      --fg-dim: #9b988c;
+      --line: #322f28;
+      --accent: #b68cf0;
+      --accent-dim: #2a2140;
+      --flag: #e4835a;
+      --flag-dim: #3a2419;
+      --ok: #8fc08f;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141310;
+    --surface: #1d1c18;
+    --surface-2: #26241f;
+    --fg: #eceae3;
+    --fg-dim: #9b988c;
+    --line: #322f28;
+    --accent: #b68cf0;
+    --accent-dim: #2a2140;
+    --flag: #e4835a;
+    --flag-dim: #3a2419;
+    --ok: #8fc08f;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 3rem 5rem;
+  }
+
+  /* ---- header ---- */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1rem;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2rem, 7vw, 3.1rem);
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+    margin: 0 0 .6rem;
+  }
+  h1 .build { font-family: var(--serif); font-weight: 500; font-size: .5em; display: block; color: var(--fg-dim); letter-spacing: 0; margin-top: .5rem; }
+  .lede {
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    color: var(--fg-dim);
+    max-width: 38ch;
+    margin: 0 0 1.4rem;
+  }
+  .status-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2.5rem; }
+  .tag {
+    font-family: var(--mono);
+    font-size: .72rem;
+    padding: .3rem .6rem;
+    border-radius: 3px;
+    background: var(--surface-2);
+    color: var(--fg-dim);
+    border: 1px solid var(--line);
+  }
+  .tag.live { color: var(--accent); background: var(--accent-dim); border-color: transparent; }
+  .tag.unver { color: var(--flag); background: var(--flag-dim); border-color: transparent; }
+
+  h2 {
+    font-family: var(--sans);
+    font-weight: 650;
+    font-size: 1.35rem;
+    letter-spacing: -.01em;
+    margin: 3.2rem 0 .3rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+  }
+  h2:first-of-type { }
+  h3 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 1.8rem 0 .4rem; }
+  .section-note { color: var(--fg-dim); font-size: .95rem; margin: 0 0 1.2rem; max-width: 62ch; }
+  p { max-width: 65ch; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+
+  /* ---- spec record ---- */
+  .record {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 1.2rem 0;
+  }
+  .record dl { margin: 0; display: grid; grid-template-columns: minmax(8.5rem, 12rem) 1fr; }
+  .record dt, .record dd {
+    margin: 0;
+    padding: .55rem .9rem;
+    border-top: 1px solid var(--line);
+    min-width: 0;
+  }
+  .record dl > dt:first-of-type, .record dl > dt:first-of-type + dd { border-top: 0; }
+  .record dt {
+    font-size: .8rem;
+    color: var(--fg-dim);
+    background: var(--surface-2);
+    display: flex;
+    align-items: center;
+  }
+  .record dd {
+    font-family: var(--mono);
+    font-size: .84rem;
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+  .mini-flag {
+    font-family: var(--sans);
+    font-size: .66rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--flag);
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    padding: 0 .35rem;
+    white-space: nowrap;
+  }
+  .mini-ok { color: var(--ok); }
+  .mini-ok, .mini-note {
+    font-family: var(--sans);
+    font-size: .66rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    padding: 0 .35rem;
+    white-space: nowrap;
+  }
+  .mini-note { color: var(--accent); }
+
+  /* ---- code ---- */
+  pre {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: .9rem 1rem;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: .82rem;
+    line-height: 1.5;
+    margin: 1.2rem 0;
+  }
+  code { font-family: var(--mono); font-size: .88em; background: var(--surface-2); padding: .08em .35em; border-radius: 3px; }
+  pre code { background: none; padding: 0; }
+
+  /* ---- app grid ---- */
+  .apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); gap: .6rem; margin: 1.2rem 0; }
+  .app {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: .7rem .8rem;
+  }
+  .app .name { font-family: var(--mono); font-size: .86rem; font-weight: 600; display: flex; align-items: baseline; gap: .4rem; flex-wrap: wrap; }
+  .app .what { font-size: .82rem; color: var(--fg-dim); margin-top: .2rem; }
+  .app.new { border-left: 3px solid var(--accent); }
+  .dot { font-size: .6rem; }
+  .dot.n { color: var(--accent); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 1rem 1.4rem; font-size: .8rem; color: var(--fg-dim); margin: .6rem 0 0; }
+  .legend span { display: inline-flex; align-items: center; gap: .4rem; }
+  .swatch { width: .7rem; height: .7rem; border-radius: 2px; display: inline-block; }
+  .swatch.acc { background: var(--accent); }
+  .swatch.car { background: var(--line); border: 1px solid var(--fg-dim); }
+
+  .callout {
+    background: var(--accent-dim);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    margin: 1.4rem 0;
+    font-size: .95rem;
+  }
+  .callout strong { color: var(--accent); }
+  .callout.warn { background: var(--flag-dim); }
+  .callout.warn strong { color: var(--flag); }
+
+  ul.clean { padding-left: 1.1rem; max-width: 65ch; }
+  ul.clean li { margin: .35rem 0; }
+
+  /* ---- download ---- */
+  .dl {
+    margin: 2.8rem 0 0;
+    padding: 1.4rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .dl h2 { margin: 0 0 .2rem; padding: 0; border: 0; font-size: 1.1rem; }
+  .dl p { color: var(--fg-dim); font-size: .9rem; margin: 0 0 1rem; }
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--sans);
+    font-weight: 650;
+    font-size: .95rem;
+    padding: .7rem 1.15rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 0;
+  }
+  .dl-btn:hover { filter: brightness(1.05); }
+  .dl-btn .arr { font-size: 1.05em; line-height: 1; }
+  .dl-meta {
+    font-family: var(--mono);
+    font-size: .74rem;
+    color: var(--fg-dim);
+    margin-top: .9rem;
+    line-height: 1.7;
+    word-break: break-all;
+  }
+  .dl-meta b { color: var(--fg); font-weight: 600; }
+  .dl-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .x-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--surface-2);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: .95rem;
+    padding: .7rem 1.1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid var(--line);
+  }
+  .x-btn:hover { border-color: var(--fg-dim); }
+  .x-btn svg { width: 1em; height: 1em; fill: currentColor; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    font-size: .82rem;
+    color: var(--fg-dim);
+  }
+  footer .hash { font-family: var(--mono); font-size: .76rem; word-break: break-all; display: inline-block; margin-top: .3rem; }
+
+  .toggle {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    right: 0;
+    margin: .7rem .8rem;
+    font-family: var(--mono);
+    font-size: .72rem;
+    background: var(--surface);
+    color: var(--fg-dim);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: .35rem .55rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .app, .tag { transition: border-color .15s ease; }
+  }
+</style>
+
+<button class="toggle" id="themeBtn" aria-label="Toggle colour theme">◐ theme</button>
+
+<div class="wrap">
+
+  <h1>iPad mini 4 engineering unit
+    <span class="build">iPad5,2 - 12H60160o - iOS 8.3 (Development)</span>
+  </h1>
+  <p class="lede">A pre-production diagnostics build that, as far as public records show, has not been dumped before.</p>
+
+  <p class="section-note">
+    This page documents a single physical unit and the factory OS image recovered from it. Values in
+    monospace are copied verbatim from the device, the PurpleSNIFF report, <code>uname&nbsp;-a</code>,
+    and <code>nvram&nbsp;-p</code>. Anything not directly proven by the dump is marked
+    unconfirmed.
+  </p>
+
+  <!-- ============ IDENTITY ============ -->
+  <h2>Device identity</h2>
+  <div class="record">
+    <dl>
+      <dt>Model (ID)</dt><dd>iPad5,2</dd>
+      <dt>Hardware model</dt><dd>J97AP</dd>
+      <dt>Marketing name</dt><dd>iPad mini 4 (cellular)</dd>
+      <dt>Model number</dt><dd>993-05535</dd>
+      <dt>Serial</dt><dd>F4KPC09NGJK9</dd>
+      <dt>MLB serial</dt><dd>C7L51030079G9T1A1</dd>
+      <dt>ECID</dt><dd>0x000668C010D82826</dd>
+      <dt>Region code</dt><dd>LL/A</dd>
+      <dt>NAND</dt><dd>128 GB</dd>
+    </dl>
+  </div>
+
+  <!-- ============ BUILD ============ -->
+  <h2>The build</h2>
+  <div class="record">
+    <dl>
+      <dt>OS version</dt><dd>8.3</dd>
+      <dt>Build</dt><dd>12H60160o <span class="mini-note">not in public firmware trees</span></dd>
+      <dt>Production mode</dt><dd>Development</dd>
+      <dt>Kernel</dt><dd>xnu-2784.20.8~15/DEVELOPMENT_ARM64</dd>
+      <dt>Kernel built</dt><dd>Sun Jan 18 2015</dd>
+      <dt>Baseband</dt><dd>2.15.02_DEBUG</dd>
+      <dt>Device mode</dt><dd>Lockdown OS Mode</dd>
+      <dt>Activation</dt><dd>Unactivated</dd>
+    </dl>
+  </div>
+
+  <h3>uname -a</h3>
+  <pre><code>Darwin iPad 14.0.0 Darwin Kernel Version 14.0.0: Sun Jan 18
+21:10:27 PST 2015; root:xnu-2784.20.8~15/DEVELOPMENT_ARM64_T7000 iPad5,2</code></pre>
+
+  <h3>nvram -p (boot configuration)</h3>
+  <pre><code>boot-args      debug=0x14e serial=3 osd=strict
+auto-boot      true
+bootdelay      0
+debug-uarts    3
+backlight-level 1615</code></pre>
+
+  <!-- ============ SECURITY STATE ============ -->
+  <h2>Security state</h2>
+  <div class="record">
+    <dl>
+      <dt>CPFM</dt><dd>01</dd>
+      <dt>Demotion</dt><dd>SEP demoted</dd>
+      <dt>Security mode</dt><dd>Secure</dd>
+      <dt>SoC</dt><dd>T7000 (Apple A8)</dd>
+    </dl>
+  </div>
+  <p>
+    <code>CPFM 01</code> means the application processor is development-fused and demotion-capable,
+    which is why the device accepts internal and development-signed images. SEP demoted
+    reports the Secure Enclave in the matching demoted state relevant because the Touch ID
+    calibration tooling (below) depends on a coherent AP/SEP pairing.
+  </p>
+
+  <!-- ============ SWITCHBOARD ============ -->
+  <h2>SwitchBoard diagnostics</h2>
+
+  <div class="apps">
+    <div class="app new"><div class="name"><span class="dot n">●</span> MesaCal.app</div><div class="what">Touch ID (“Mesa”) sensor calibration station.</div></div>
+    <div class="app new"><div class="name"><span class="dot n">●</span> Sightglass.app</div><div class="what">Display / optical calibration.</div></div>
+    <div class="app new"><div class="name"><span class="dot n">●</span> Pyro.app</div><div class="what">Codename. Subsystem not yet identified. <span class="mini-flag">unidentified</span></div></div>
+    <div class="app new"><div class="name"><span class="dot n">●</span> Ninten.app</div><div class="what">Codename (EarthBound cluster). <span class="mini-flag">unidentified</span></div></div>
+    <div class="app"><div class="name">GrapeCal.app</div><div class="what">Touch controller (“Grape”) calibration.</div></div>
+    <div class="app"><div class="name">dtxCaliente.app</div><div class="what">Display stress testing.</div></div>
+    <div class="app"><div class="name">Ness.app</div><div class="what">Factory Burn-In tests.</div></div>
+    <div class="app"><div class="name">LcdUTest.app</div><div class="what">LCD tests.</div></div>
+    <div class="app"><div class="name">LCDMura.app</div><div class="what">Display tests.</div></div>
+    <div class="app"><div class="name">Operator.app</div><div class="what">Component diagnostics.</div></div>
+    <div class="app"><div class="name">ZReliability.app</div><div class="what">Reliability cycling.</div></div>
+    <div class="app"><div class="name">YThermalDOE.app</div><div class="what">Thermal DOE.</div></div>
+    <div class="app"><div class="name">USBHost.app</div><div class="what">USB host interface test.</div></div>
+    <div class="app"><div class="name">WiPASmini.app</div><div class="what">Wi-Fi / radio test.</div></div>
+    <div class="app"><div class="name">SkankBarcodeDisplay.app</div><div class="what">On-screen barcode station.</div></div>
+  </div>
+  <div class="legend">
+    <span><span class="swatch acc"></span> first appearance (Touch ID / A8)</span>
+    <span><span class="swatch car"></span> carried over from earlier factory images</span>
+  </div>
+
+  <h3>Diags trees</h3>
+  <p class="section-note">
+    <code>/AppleInternal/Diags/</code> directories. The <code>Mesa</code> tree (Touch ID) and the
+    codenamed <code>Earthbound</code> / <code>Oscar</code> trees are the ones absent from the older corpus.
+  </p>
+  <pre><code>AudioTests   Baseband   Battery    Bluetooth   Debug
+Earthbound   FactoryInfo  Fonts    Grape       ISP
+Inferno      LCMPatterns  Logs     Mesa        Oscar
+RAMDisk      Scripts      Tests    WiFiFirmware  bin</code></pre>
+
+  <div class="callout">
+    <strong>What's actually new here.</strong> The Touch ID (“Mesa”) calibration station and the
+    A8-era codenamed diagnostics are the first-documented part of this image. Everything else
+    establishes continuity with the known factory-OS lineage.
+  </div>
+
+  <!-- ============ PROVENANCE ============ -->
+  <h2>Provenance &amp; method</h2>
+  <ul class="clean">
+    <li>Device reached over SSH into the live NonUI OS (Dropbear).</li>
+    <li>Root filesystem archived with on-device <code>bsdtar</code>, streamed to host, verified with <code>tar&nbsp;tzf</code></li>
+    <li>Identity values read from <code>PurpleSNIFF</code>, <code>uname&nbsp;-a</code> and <code>nvram&nbsp;-p</code>.</li>
+  </ul>
+
+  <div class="callout warn">
+    The train codename (e.g. a “Donner / Tianshan”-style
+    reconstruction) is <em>not</em> asserted here because the dump hasn't yet been checked for it.
+    These will be updated once the artifact itself confirms them.
+  </div>
+
+  <!-- ============ DOWNLOAD ============ -->
+  <div class="dl">
+    <h2>Download the dump</h2>
+    <p>Full root filesystem archive of the recovered build. Verify against the SHA-256 before trusting a copy.</p>
+    <div class="dl-actions">
+      <a class="dl-btn" id="dlBtn" href="https://danielslab.org/s/NmpYcewKLeanFPL">
+        <span class="arr">↓</span> Download root dump
+      </a>
+      <a class="x-btn" id="xBtn" href="https://x.com/YOUR-HANDLE">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg>
+        Check it out on X
+      </a>
+    </div>
+    <div class="dl-meta">
+      <b>file</b> ipad5_2_full.tar.gz &nbsp;·&nbsp; <b>format</b> gzip-compressed tar (live rootfs)<br>
+      <b>sha256</b> 2c5628c3d8ac1369c55c293a7a6e2cc5f76121c77aa785fbb7dc0d256f948568
+    </div>
+  </div>
+
+  <footer>
+    <p>Single-unit record - iPad5,2 (J97AP) - build 12H60160o - iOS 8.3 Development - kernel built 2015-01-18 - documented 2026-10-11.</p>
+    <p>Root archive SHA-256:<br><span class="hash">2c5628c3d8ac1369c55c293a7a6e2cc5f76121c77aa785fbb7dc0d256f948568</span></p>
+    <p style="margin-top:1rem">Maintained by DsSoft. Figures are from one physical device and may not generalise to other units of the same model.</p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('themeBtn');
+    var root = document.documentElement;
+    function current() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('ipad52-theme', next); } catch (e) {}
+    });
+    try {
+      var saved = localStorage.getItem('ipad52-theme');
+      if (saved) root.setAttribute('data-theme', saved);
+    } catch (e) {}
+  })();
+</script>
+
+</body></html>
