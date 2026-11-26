@@ -651,6 +651,11 @@
 
     /* ── Product (iOSBridge) ── */
     .product {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: var(--space-5xl) var(--space-xl);
       max-width: 980px;
       margin: 0 auto;
@@ -728,10 +733,13 @@
 
     /* ── In progress ── */
     .progress {
-      padding: var(--space-4xl) var(--space-xl) var(--space-5xl);
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-5xl) var(--space-xl);
       max-width: 980px;
       margin: 0 auto;
-      border-top: 1px solid var(--border-subtle);
     }
 
     .progress__eyebrow {
