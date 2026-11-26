@@ -5,17 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DsSoft — Full-stack hardware & software</title>
-  <meta name="description" content="18-year-old systems engineer in Zurich. Building 140 km/h hyperscooters, custom 72V battery packs, VESC mods to 450A, PCB design, and reverse engineering.">
+  <meta name="description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taped out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
   <link rel="canonical" href="https://www.dssoft.ch/">
   <meta property="og:site_name" content="DsSoft">
   <meta property="og:title" content="DsSoft — Full-stack hardware & software">
-  <meta property="og:description" content="18-year-old systems engineer in Zurich. Building 140 km/h hyperscooters, custom 72V battery packs, VESC mods to 450A, PCB design, and reverse engineering.">
+  <meta property="og:description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taped out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.dssoft.ch/">
   <meta property="og:image" content="https://www.dssoft.ch/assets/images/rawdev.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DsSoft — Full-stack hardware & software">
-  <meta name="twitter:description" content="18-year-old systems engineer in Zurich. Building 140 km/h hyperscooters, custom 72V battery packs, VESC mods to 450A, PCB design, and reverse engineering.">
+  <meta name="twitter:description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taped out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
   <meta name="twitter:image" content="https://www.dssoft.ch/assets/images/rawdev.jpg">
   <script type="application/ld+json">
   {
@@ -27,7 +27,13 @@
       "https://github.com/dssoftx",
       "https://www.tiktok.com/@whos_.daniel"
     ],
-    "description": "Independent systems engineer specializing in custom battery packs, hyperscooter builds, VESC modifications, PCB design, and security research.",
+    "description": "Independent systems and firmware engineer specializing in iOS security research, digital chip design, PCB design, custom battery packs and hyperscooter builds.",
+    "email": "mailto:info@dssoft.ch",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Schaffhausen",
+      "addressCountry": "CH"
+    },
     "knowsAbout": [
       "Battery Building",
       "VESC Modifications",
@@ -36,6 +42,9 @@
       "Embedded Systems",
       "PCB Design",
       "iOS Security Research",
+      "RISC-V",
+      "Digital IC Design",
+      "FPGA",
       "Hackintosh Development"
     ]
   }
@@ -654,8 +663,14 @@
 
     .secondary-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--space-lg);
+    }
+
+    @media (max-width: 768px) {
+      .secondary-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .glass-tile {
@@ -693,6 +708,25 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(to bottom, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.65) 100%);
+    }
+
+    .glass-tile__preview--code {
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-lg) var(--space-2xl);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(10, 132, 255, 0.18) 0%, transparent 55%),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 22px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 22px),
+        #0b0b0d;
+    }
+
+    .glass-tile__preview--code span {
+      position: relative;
+      z-index: 1;
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.55);
     }
 
     .glass-tile__body {
@@ -1134,7 +1168,8 @@
         <li><a href="#capabilities">Capabilities</a></li>
         <li><a href="#tiktok">TikTok</a></li>
         <li><a href="hyperscooters.html">Hyperscooters</a></li>
-        <li><a href="https://t.me/the_hackintosh" target="_blank">Contact</a></li>
+        <li><a href="https://github.com/dssoftx" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:info@dssoft.ch">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -1148,8 +1183,8 @@
       </div>
       <div class="hero__content">
         <h1 class="hero__headline text-gradient">From silicon to runtime. Complete system mastery.</h1>
-        <p class="hero__subtitle">Battery building, VESC mods to 450A, hyperscooters to 140 km/h, reverse engineering,
-          and embedded development.</p>
+        <p class="hero__subtitle">iOS security research, a RISC-V CPU on real silicon, PCB design, battery building
+          and hyperscooters to 140 km/h.</p>
         <a href="#capabilities" class="hero__cta">Explore Capabilities</a>
       </div>
     </section>
@@ -1158,8 +1193,8 @@
       <div class="metrics__inner">
         <div class="metrics__item reveal"><span class="metrics__value">5000+</span><span class="metrics__label">Hours
             IDA Pro</span></div>
-        <div class="metrics__item reveal reveal--stagger-1"><span class="metrics__value">18yo</span><span
-            class="metrics__label">Solo operator</span></div>
+        <div class="metrics__item reveal reveal--stagger-1"><span class="metrics__value">RV32E</span><span
+            class="metrics__label">Own CPU on silicon</span></div>
         <div class="metrics__item reveal reveal--stagger-2"><span class="metrics__value">450A</span><span
             class="metrics__label">VESC builds</span></div>
         <div class="metrics__item reveal reveal--stagger-3"><span class="metrics__value">140 km/h</span><span
@@ -1217,7 +1252,7 @@
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">Security Research</span>
             <h3 class="capability-card__title text-gradient">Reverse engineering</h3>
-            <p class="capability-card__desc">Reverse engineering, Bootrom exploitation, Runtime instrumentation.</p>
+            <p class="capability-card__desc">Bootrom and iBoot analysis, firmware extraction and runtime instrumentation on iOS hardware.</p>
             <span class="capability-card__link">See the research Lab <span aria-hidden="true">→</span></span>
           </div>
         </a>
@@ -1229,7 +1264,7 @@
           <div class="capability-card__scrim"></div>
           <div class="capability-card__counter">04 / 04</div>
           <div class="capability-card__content">
-            <span class="capability-card__eyebrow">Research</span>
+            <span class="capability-card__eyebrow">Hardware</span>
             <h3 class="capability-card__title text-gradient">PCB Design</h3>
             <p class="capability-card__desc">Custom printed circuit board layouts for hyperscooters and EV projects.</p>
             <span class="capability-card__link">See the PCB Work <span aria-hidden="true">→</span></span>
@@ -1251,7 +1286,7 @@
           <div class="glass-tile__body">
             <div class="glass-tile__eyebrow">OpenCore · AMD · macOS</div>
             <h4 class="glass-tile__title">Hackintosh Engineering</h4>
-            <p class="glass-tile__desc">AMD Ryzen 5950X and RX 6750 XT running native macOS — custom EFI from scratch, ACPI hot-patches, and kexts built for a daily-driver machine. Benchmark scores that beat stock Apple hardware at the same price.</p>
+            <p class="glass-tile__desc">AMD Ryzen 5950X and RX 6750 XT running native macOS — custom EFI from scratch, ACPI hot-patches, and kexts built for a daily-driver machine. Geekbench results on the build page.</p>
             <span class="glass-tile__cta">View build &rarr;</span>
           </div>
         </a>
@@ -1264,6 +1299,24 @@
             <span class="glass-tile__cta">View repos &rarr;</span>
           </div>
         </a>
+        <a href="https://github.com/dssoftx/tinyrv32e" target="_blank" rel="noopener" class="glass-tile reveal reveal--stagger-2">
+          <div class="glass-tile__preview glass-tile__preview--code" aria-hidden="true"><span>tt_um_dssoftx_tinyrv32e</span></div>
+          <div class="glass-tile__body">
+            <div class="glass-tile__eyebrow">RISC-V · Tiny Tapeout · GF180MCU</div>
+            <h4 class="glass-tile__title">tinyrv32e — Own Silicon</h4>
+            <p class="glass-tile__desc">A multi-cycle RV32E CPU core designed from scratch, with program and data in external SPI flash and PSRAM. Submitted to Tiny Tapeout GF 26c on a 2×2 tile slot, sponsored by SwissChips (ETH Zürich).</p>
+            <span class="glass-tile__cta">View on GitHub &rarr;</span>
+          </div>
+        </a>
+        <div class="glass-tile reveal reveal--stagger-3">
+          <div class="glass-tile__preview glass-tile__preview--code" aria-hidden="true"><span>XC7A35T · PCIe · M.2</span></div>
+          <div class="glass-tile__body">
+            <div class="glass-tile__eyebrow">FPGA · PCIe · In progress</div>
+            <h4 class="glass-tile__title">M.2 FPGA Boards</h4>
+            <p class="glass-tile__desc">Two Artix-7 boards in M.2 form factor: a PCIe DMA card with FT601 USB 3 and a USB-C side channel, and an accelerator with on-board DDR3. Built to learn PCIe from the ground up.</p>
+            <span class="glass-tile__cta">Build log coming soon</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1276,12 +1329,12 @@
           <img src="assets/images/Icon.png" alt="iOSBridge">
         </div>
         <div class="product-card__body">
-          <div class="product-card__eyebrow">FOSS · Free Forever · Cross-platform</div>
+          <div class="product-card__eyebrow">Open Source · Cross-platform</div>
           <div class="product-card__name">iOSBridge</div>
-          <p class="product-card__desc">The open-source alternative to 3uTools. Full iDevice management — backups, file access, app sideloading, and iCloud lock removal — with no subscription, no telemetry, and no nonsense. Built because the existing tools weren't good enough.</p>
+          <p class="product-card__desc">The open-source alternative to 3uTools. Full iDevice management on top of libimobiledevice — restore and flash, backups, file access, recovery and DFU tooling, and SSH over USB. No iTunes, no telemetry, no nonsense. Built because the existing tools weren't good enough.</p>
           <div class="product-card__tags">
             <span class="product-tag">3uTools Alternative</span>
-            <span class="product-tag">iCloud Unlock</span>
+            <span class="product-tag">Restore &amp; DFU</span>
             <span class="product-tag">iDevice Management</span>
             <span class="product-tag">Open Source</span>
           </div>
@@ -1321,7 +1374,7 @@
           <h2 class="cta-panel__title text-gradient">The Build Logs</h2>
           <p class="cta-panel__text">Experience the engineering in motion.</p>
           <a href="https://www.tiktok.com/@whos_.daniel" target="_blank" class="cta-panel__btn">
-            <span>Follow on</span>
+            <span>Follow on TikTok</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px">
               <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
@@ -1335,8 +1388,10 @@
 
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__copy">© DsSoft. All rights reserved.</p>
+      <p class="footer__copy">© 2026 DsSoft · Schaffhausen, Switzerland</p>
       <ul class="footer__links">
+        <li><a href="mailto:info@dssoft.ch">info@dssoft.ch</a></li>
+        <li><a href="https://github.com/dssoftx" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="reverse-engineering.html">Reverse engineering</a></li>
         <li><a href="embedded-tooling.html">Tooling</a></li>
       </ul>
