@@ -5,17 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DsSoft — Full-stack hardware & software</title>
-  <meta name="description" content="18-year-old systems engineer in Zurich. Building 140 km/h hyperscooters, custom 72V battery packs, VESC mods to 450A, PCB design, and reverse engineering.">
+  <meta name="description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taping out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
   <link rel="canonical" href="https://www.dssoft.ch/">
   <meta property="og:site_name" content="DsSoft">
   <meta property="og:title" content="DsSoft — Full-stack hardware & software">
-  <meta property="og:description" content="18-year-old systems engineer in Zurich. Building 140 km/h hyperscooters, custom 72V battery packs, VESC mods to 450A, PCB design, and reverse engineering.">
+  <meta property="og:description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taping out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.dssoft.ch/">
   <meta property="og:image" content="https://www.dssoft.ch/assets/images/rawdev.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DsSoft — Full-stack hardware & software">
-  <meta name="twitter:description" content="18-year-old systems engineer in Zurich. Building 140 km/h hyperscooters, custom 72V battery packs, VESC mods to 450A, PCB design, and reverse engineering.">
+  <meta name="twitter:description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taping out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
   <meta name="twitter:image" content="https://www.dssoft.ch/assets/images/rawdev.jpg">
   <script type="application/ld+json">
   {
@@ -27,7 +27,13 @@
       "https://github.com/dssoftx",
       "https://www.tiktok.com/@whos_.daniel"
     ],
-    "description": "Independent systems engineer specializing in custom battery packs, hyperscooter builds, VESC modifications, PCB design, and security research.",
+    "description": "Independent systems and firmware engineer specializing in iOS security research, digital chip design, PCB design, custom battery packs and hyperscooter builds.",
+    "email": "mailto:info@dssoft.ch",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Schaffhausen",
+      "addressCountry": "CH"
+    },
     "knowsAbout": [
       "Battery Building",
       "VESC Modifications",
@@ -36,6 +42,9 @@
       "Embedded Systems",
       "PCB Design",
       "iOS Security Research",
+      "RISC-V",
+      "Digital IC Design",
+      "FPGA",
       "Hackintosh Development"
     ]
   }
@@ -640,249 +649,150 @@
       }
     }
 
-    /* ── Secondary tiles ── */
-    .secondary-section {
+    /* ── Product (iOSBridge) ── */
+    .product {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: var(--space-5xl) var(--space-xl);
-      max-width: 1200px;
+      max-width: 980px;
       margin: 0 auto;
+      text-align: center;
     }
 
-    .secondary-section__header {
-      text-align: center;
+    .product__icon {
+      width: 112px;
+      height: 112px;
+      border-radius: 25px;
+      display: block;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .product__eyebrow {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .product__title {
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+      margin-bottom: var(--space-md);
+    }
+
+    .product__tagline {
+      font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: var(--space-lg);
+    }
+
+    .product__desc {
+      max-width: 620px;
+      margin: 0 auto var(--space-xl);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+
+    .product__links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2xl);
       margin-bottom: var(--space-3xl);
     }
 
-    .secondary-grid {
+    .text-link {
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: #2997FF;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .text-link::after {
+      content: ' \203A';
+      font-size: 1.15em;
+    }
+
+    .product__platforms {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      letter-spacing: 0.01em;
+    }
+
+    /* ── In progress ── */
+    .progress {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-5xl) var(--space-xl);
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .progress__eyebrow {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #F56300;
+      margin-bottom: var(--space-sm);
+    }
+
+    .progress__title {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: var(--space-md);
+    }
+
+    .progress__lede {
+      max-width: 560px;
+      font-size: clamp(1.0625rem, 1.6vw, 1.3125rem);
+      line-height: 1.5;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .progress__specs {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-lg);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-2xl);
     }
 
-    .glass-tile {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid var(--border-subtle);
-      border-radius: 32px;
-      padding: 0;
-      overflow: hidden;
-      text-decoration: none;
-      transition: all 0.5s var(--ease-out-expo);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+    .progress__spec {
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border-strong);
     }
 
-    .glass-tile:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-5px);
-    }
-
-    .glass-tile__preview {
-      width: 100%;
-      height: 190px;
-      background-size: cover;
-      background-position: center top;
-      flex-shrink: 0;
-      position: relative;
-    }
-
-    .glass-tile__preview::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.65) 100%);
-    }
-
-    .glass-tile__body {
-      padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .glass-tile__title {
-      font-size: 1.25rem;
+    .progress__spec dt {
+      font-size: 1.0625rem;
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: var(--space-xs);
     }
 
-    .glass-tile__desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      flex: 1;
-    }
-
-    .glass-tile__eyebrow {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: var(--space-sm);
-    }
-
-    .glass-tile__cta {
-      display: inline-block;
-      margin-top: var(--space-lg);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      transition: color var(--duration-fast);
-    }
-
-    .glass-tile:hover .glass-tile__cta {
-      color: var(--text-primary);
-    }
-
-    /* ── Product card ── */
-    .products-section {
-      padding: 0 var(--space-xl) var(--space-5xl);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .products-section__header {
-      text-align: center;
-      margin-bottom: var(--space-3xl);
-    }
-
-    .product-card {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2xl);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      border-radius: 28px;
-      padding: var(--space-2xl);
-      text-decoration: none;
-      transition: all 0.5s var(--ease-out-expo);
-    }
-
-    .product-card:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(255, 255, 255, 0.18);
-      transform: translateY(-3px);
-    }
-
-    .product-card__icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 18px;
-      overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    .product-card__icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .product-card__body { flex: 1; min-width: 0; }
-
-    .product-card__eyebrow {
-      font-size: 0.68rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .product-card__name {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.03em;
-      margin-bottom: var(--space-sm);
-    }
-
-    .product-card__desc {
+    .progress__spec dd {
       font-size: 0.9375rem;
+      line-height: 1.55;
       color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: var(--space-md);
-    }
-
-    .product-card__tags { display: flex; flex-wrap: wrap; gap: 8px; }
-
-    .product-tag {
-      display: inline-block;
-      padding: 4px 11px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
-
-    .product-card__action { flex-shrink: 0; }
-
-    .product-card__visit {
-      display: inline-flex;
-      align-items: center;
-      padding: 12px 22px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      white-space: nowrap;
-      transition: all 0.3s var(--ease-out-expo);
-    }
-
-    .product-card:hover .product-card__visit {
-      background: rgba(255, 255, 255, 0.13);
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-
-    .product-card__platforms {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px;
-      margin-top: var(--space-md);
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .platform-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 10px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    .platform-pill svg {
-      width: 11px;
-      height: 11px;
-      fill: currentColor;
-      flex-shrink: 0;
-      opacity: 0.7;
     }
 
     @media (max-width: 768px) {
-      .glass-tile { border-radius: 24px; }
-      .glass-tile__body { padding: var(--space-lg) var(--space-xl) var(--space-xl); }
-      .product-card { flex-direction: column; align-items: flex-start; gap: var(--space-lg); }
-      .product-card__action { align-self: stretch; }
-      .product-card__visit { width: 100%; justify-content: center; }
+      .progress__specs { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .product__links { flex-direction: column; gap: var(--space-md); }
     }
 
     /* ── CTA Panel ── */
@@ -1082,6 +992,12 @@
       }
     }
 
+    @media (max-width: 768px) {
+      .scroll-hint {
+        display: none;
+      }
+    }
+
     .scroll-hint.is-hidden {
       opacity: 0 !important;
       transition: opacity 0.4s ease;
@@ -1119,7 +1035,138 @@
       background: #fff;
       transform: scale(1.5);
     }
+    /* ── Link chooser (glass) ── */
+    .chooser {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.45);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s var(--ease-out-expo), visibility 0s linear 0.3s;
+    }
+
+    .chooser.is-open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s var(--ease-out-expo), visibility 0s;
+    }
+
+    .chooser__sheet {
+      width: min(380px, 100%);
+      background: rgba(36, 36, 40, 0.55);
+      -webkit-backdrop-filter: saturate(180%) blur(40px);
+      backdrop-filter: saturate(180%) blur(40px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+      transform: scale(0.94);
+      transition: transform 0.45s var(--ease-out-expo);
+    }
+
+    .chooser.is-open .chooser__sheet {
+      transform: scale(1);
+    }
+
+    .chooser__head {
+      padding: 1.75rem 1.5rem 1.25rem;
+      text-align: center;
+    }
+
+    .chooser__title {
+      font-size: 1.1875rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .chooser__text {
+      font-size: 0.875rem;
+      color: rgba(235, 235, 245, 0.6);
+    }
+
+    .chooser__option {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      width: 100%;
+      padding: 0.95rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      text-align: left;
+      transition: background var(--duration-fast);
+    }
+
+    .chooser__option:hover,
+    .chooser__option:focus-visible {
+      background: rgba(255, 255, 255, 0.07);
+      outline: none;
+    }
+
+    .chooser__option svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      fill: currentColor;
+      opacity: 0.9;
+    }
+
+    .chooser__label {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chooser__label strong {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .chooser__label span {
+      font-size: 0.8125rem;
+      color: rgba(235, 235, 245, 0.6);
+    }
+
+    .chooser__chev {
+      color: rgba(235, 235, 245, 0.35);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .chooser__cancel {
+      display: block;
+      width: 100%;
+      padding: 0.95rem 1.5rem;
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: none;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2997FF;
+      cursor: pointer;
+      transition: background var(--duration-fast);
+    }
+
+    .chooser__cancel:hover,
+    .chooser__cancel:focus-visible {
+      background: rgba(255, 255, 255, 0.07);
+      outline: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .chooser, .chooser__sheet { transition: none; }
+    }
   </style>
+  <link rel="stylesheet" href="assets/css/boxless.css">
 </head>
 
 <body>
@@ -1134,7 +1181,8 @@
         <li><a href="#capabilities">Capabilities</a></li>
         <li><a href="#tiktok">TikTok</a></li>
         <li><a href="hyperscooters.html">Hyperscooters</a></li>
-        <li><a href="https://t.me/the_hackintosh" target="_blank">Contact</a></li>
+        <li><a href="https://github.com/dssoftx" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:info@dssoft.ch">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -1148,8 +1196,8 @@
       </div>
       <div class="hero__content">
         <h1 class="hero__headline text-gradient">From silicon to runtime. Complete system mastery.</h1>
-        <p class="hero__subtitle">Battery building, VESC mods to 450A, hyperscooters to 140 km/h, reverse engineering,
-          and embedded development.</p>
+        <p class="hero__subtitle">iOS security research, a RISC-V CPU headed for silicon, PCB design, battery building
+          and hyperscooters to 140 km/h.</p>
         <a href="#capabilities" class="hero__cta">Explore Capabilities</a>
       </div>
     </section>
@@ -1158,8 +1206,8 @@
       <div class="metrics__inner">
         <div class="metrics__item reveal"><span class="metrics__value">5000+</span><span class="metrics__label">Hours
             IDA Pro</span></div>
-        <div class="metrics__item reveal reveal--stagger-1"><span class="metrics__value">18yo</span><span
-            class="metrics__label">Solo operator</span></div>
+        <div class="metrics__item reveal reveal--stagger-1"><span class="metrics__value">RV32E</span><span
+            class="metrics__label">Own CPU in tapeout</span></div>
         <div class="metrics__item reveal reveal--stagger-2"><span class="metrics__value">450A</span><span
             class="metrics__label">VESC builds</span></div>
         <div class="metrics__item reveal reveal--stagger-3"><span class="metrics__value">140 km/h</span><span
@@ -1175,17 +1223,16 @@
 
       <div id="capabilities-snap">
 
-        <a href="battery.html" class="capability-card" id="cap-0" style="--bg-image: url('./assets/images/batt1.jpg');">
+        <a href="https://app.tinytapeout.com/projects/6598" target="_blank" rel="noopener" class="capability-card" id="cap-0" data-chooser="tinyrv-chooser" aria-haspopup="dialog" style="--bg-image: url('./assets/images/tinyrv32e-gds.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">01 / 04</div>
+          <div class="capability-card__counter">01 / 06</div>
           <div class="capability-card__content">
-            <span class="capability-card__eyebrow">Energy Systems</span>
-            <h3 class="capability-card__title text-gradient">Battery Building</h3>
-            <p class="capability-card__desc">40S+ high-discharge packs engineered for hyperscooters and DIY EV projects.
-            </p>
-            <span class="capability-card__link">View Engineering Process <span aria-hidden="true">→</span></span>
+            <span class="capability-card__eyebrow">Silicon · RISC-V</span>
+            <h3 class="capability-card__title text-gradient">tinyrv32e</h3>
+            <p class="capability-card__desc">A multi-cycle RV32E CPU, written from scratch in Verilog. Runs C straight from SPI flash at 25 MHz. Taping out on Tiny Tapeout GF 26c (GF180MCU, 2×2 tiles), sponsored by SwissChips at ETH Zürich.</p>
+            <span class="capability-card__link">Explore the chip <span aria-hidden="true">→</span></span>
           </div>
           <div class="scroll-hint" id="scroll-hint">
             <span class="scroll-hint__label">Scroll</span>
@@ -1193,46 +1240,69 @@
           </div>
         </a>
 
-        <a href="hyperscooters.html" class="capability-card" id="cap-1"
-          style="--bg-image: url('./assets/images/lime5.jpg');">
+        <a href="reverse-engineering.html" class="capability-card" id="cap-1" style="--bg-image: url('./assets/images/proto1.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">02 / 04</div>
-          <div class="capability-card__content">
-            <span class="capability-card__eyebrow">Mobility</span>
-            <h3 class="capability-card__title text-gradient">Hyperscooter Design</h3>
-            <p class="capability-card__desc">140 km/h performance achieved through custom VESC logic and thermal
-              optimisation.</p>
-            <span class="capability-card__link">See the G30 Flagship <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-
-        <a href="reverse-engineering.html" class="capability-card" id="cap-2"
-          style="--bg-image: url('./assets/images/proto1.jpg');">
-          <div class="capability-card__bg"></div>
-          <div class="capability-card__scrim-top"></div>
-          <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">03 / 04</div>
+          <div class="capability-card__counter">02 / 06</div>
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">Security Research</span>
             <h3 class="capability-card__title text-gradient">Reverse engineering</h3>
-            <p class="capability-card__desc">Reverse engineering, Bootrom exploitation, Runtime instrumentation.</p>
+            <p class="capability-card__desc">Bootrom and iBoot analysis, firmware extraction and runtime instrumentation, on retail and prototype iOS hardware.</p>
             <span class="capability-card__link">See the research Lab <span aria-hidden="true">→</span></span>
           </div>
         </a>
 
-        <a href="pcb-design.html" class="capability-card" id="cap-3"
-          style="--bg-image: url('./assets/images/pcb1.jpg');">
+
+        <a href="battery.html" class="capability-card" id="cap-2" style="--bg-image: url('./assets/images/batt1.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">04 / 04</div>
+          <div class="capability-card__counter">03 / 06</div>
           <div class="capability-card__content">
-            <span class="capability-card__eyebrow">Research</span>
+            <span class="capability-card__eyebrow">Energy Systems</span>
+            <h3 class="capability-card__title text-gradient">Battery Building</h3>
+            <p class="capability-card__desc">40S+ high-discharge packs engineered for hyperscooters and DIY EV projects.</p>
+            <span class="capability-card__link">View Engineering Process <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="hyperscooters.html" class="capability-card" id="cap-3" style="--bg-image: url('./assets/images/lime5.jpg');">
+          <div class="capability-card__bg"></div>
+          <div class="capability-card__scrim-top"></div>
+          <div class="capability-card__scrim"></div>
+          <div class="capability-card__counter">04 / 06</div>
+          <div class="capability-card__content">
+            <span class="capability-card__eyebrow">Mobility</span>
+            <h3 class="capability-card__title text-gradient">Hyperscooter Design</h3>
+            <p class="capability-card__desc">140 km/h performance achieved through custom VESC logic and thermal optimisation.</p>
+            <span class="capability-card__link">See the G30 Flagship <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="pcb-design.html" class="capability-card" id="cap-4" style="--bg-image: url('./assets/images/pcb1.jpg');">
+          <div class="capability-card__bg"></div>
+          <div class="capability-card__scrim-top"></div>
+          <div class="capability-card__scrim"></div>
+          <div class="capability-card__counter">05 / 06</div>
+          <div class="capability-card__content">
+            <span class="capability-card__eyebrow">Hardware</span>
             <h3 class="capability-card__title text-gradient">PCB Design</h3>
             <p class="capability-card__desc">Custom printed circuit board layouts for hyperscooters and EV projects.</p>
             <span class="capability-card__link">See the PCB Work <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="hackintosh.html" class="capability-card" id="cap-5" style="--bg-image: url('./assets/images/headerhack.jpg');">
+          <div class="capability-card__bg"></div>
+          <div class="capability-card__scrim-top"></div>
+          <div class="capability-card__scrim"></div>
+          <div class="capability-card__counter">06 / 06</div>
+          <div class="capability-card__content">
+            <span class="capability-card__eyebrow">OpenCore · AMD · macOS</span>
+            <h3 class="capability-card__title text-gradient">Hackintosh Engineering</h3>
+            <p class="capability-card__desc">A Ryzen 9 5950X desktop and a ThinkPad X1 Carbon with accelerated Iris Xe, both on native macOS. Custom EFIs, ACPI patches and kexts.</p>
+            <span class="capability-card__link">View the build <span aria-hidden="true">→</span></span>
           </div>
         </a>
 
@@ -1241,77 +1311,36 @@
 
     <div class="card-dots" id="card-dots"></div>
 
-    <section class="secondary-section">
-      <div class="secondary-section__header reveal">
-        <h2 class="text-gradient">More Work</h2>
+    <section class="product reveal" id="iosbridge">
+      <img class="product__icon" src="assets/images/Icon.png" alt="">
+      <p class="product__eyebrow">Open source · Cross-platform</p>
+      <h2 class="product__title text-gradient">iOSBridge</h2>
+      <p class="product__tagline">Your iPhone. Any computer.<br>No iTunes.</p>
+      <p class="product__desc">A device manager built on libimobiledevice. Restore and flash firmware, back up and browse files, drop into recovery or DFU, and open SSH over USB.</p>
+      <div class="product__links">
+        <a class="text-link" href="https://iosbridge.com" target="_blank" rel="noopener">Learn more</a>
       </div>
-      <div class="secondary-grid">
-        <a href="hackintosh.html" class="glass-tile reveal">
-          <div class="glass-tile__preview" style="background-image: url('assets/images/windowonly.png');"></div>
-          <div class="glass-tile__body">
-            <div class="glass-tile__eyebrow">OpenCore · AMD · macOS</div>
-            <h4 class="glass-tile__title">Hackintosh Engineering</h4>
-            <p class="glass-tile__desc">AMD Ryzen 5950X and RX 6750 XT running native macOS — custom EFI from scratch, ACPI hot-patches, and kexts built for a daily-driver machine. Benchmark scores that beat stock Apple hardware at the same price.</p>
-            <span class="glass-tile__cta">View build &rarr;</span>
-          </div>
-        </a>
-        <a href="embedded-tooling.html" class="glass-tile reveal reveal--stagger-1">
-          <div class="glass-tile__preview" style="background-image: url('assets/images/proto2.jpg'); background-position: center;"></div>
-          <div class="glass-tile__body">
-            <div class="glass-tile__eyebrow">iOS Security Research · Open Source</div>
-            <h4 class="glass-tile__title">iOS Security Tooling</h4>
-            <p class="glass-tile__desc">Three open-source tools for low-level iOS access: 64-bit iBoot patcher, Astris probe patcher, and an SSH ramdisk for iPhone 15 Plus. Built for researchers — public on GitHub.</p>
-            <span class="glass-tile__cta">View repos &rarr;</span>
-          </div>
-        </a>
-      </div>
+      <p class="product__platforms">macOS (Apple silicon and Intel) · Windows · Linux (AppImage and .deb)</p>
     </section>
 
-    <section class="products-section">
-      <div class="products-section__header reveal">
-        <h2 class="text-gradient">Active Products</h2>
-      </div>
-      <a href="https://iosbridge.com" target="_blank" class="product-card reveal">
-        <div class="product-card__icon">
-          <img src="assets/images/Icon.png" alt="iOSBridge">
+    <section class="progress reveal">
+      <p class="progress__eyebrow">In progress</p>
+      <h2 class="progress__title text-gradient">M.2 FPGA boards.</h2>
+      <p class="progress__lede">Two Artix-7 boards in M.2 form factor, built to learn PCIe from the ground up.</p>
+      <dl class="progress__specs">
+        <div class="progress__spec">
+          <dt>DMA card</dt>
+          <dd>XC7A35T with FT601 USB 3 and a USB-C side channel.</dd>
         </div>
-        <div class="product-card__body">
-          <div class="product-card__eyebrow">FOSS · Free Forever · Cross-platform</div>
-          <div class="product-card__name">iOSBridge</div>
-          <p class="product-card__desc">The open-source alternative to 3uTools. Full iDevice management — backups, file access, app sideloading, and iCloud lock removal — with no subscription, no telemetry, and no nonsense. Built because the existing tools weren't good enough.</p>
-          <div class="product-card__tags">
-            <span class="product-tag">3uTools Alternative</span>
-            <span class="product-tag">iCloud Unlock</span>
-            <span class="product-tag">iDevice Management</span>
-            <span class="product-tag">Open Source</span>
-          </div>
-          <div class="product-card__platforms">
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              macOS ARM
-            </span>
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              macOS Intel
-            </span>
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M3 12V6.75L9 5.43V11.91L3 12M20 3V11.75L11 11.91V5.06L20 3M3 13L9 13.09V19.9L3 18.75V13M20 13.25V22L11 20.94V13.09L20 13.25Z"/></svg>
-              Windows
-            </span>
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M20 19H4V5H20V19M20 3H4C2.9 3 2 3.9 2 5V19A2 2 0 004 21H20A2 2 0 0022 19V5C22 3.9 21.1 3 20 3M7 7L5.5 8.5L7 10L5.5 11.5L7 13L3.5 9.5L7 6V7M11.5 15L13 13H9L11.5 15Z"/></svg>
-              Linux AppImage
-            </span>
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M20 19H4V5H20V19M20 3H4C2.9 3 2 3.9 2 5V19A2 2 0 004 21H20A2 2 0 0022 19V5C22 3.9 21.1 3 20 3M7 7L5.5 8.5L7 10L5.5 11.5L7 13L3.5 9.5L7 6V7M11.5 15L13 13H9L11.5 15Z"/></svg>
-              Linux .deb
-            </span>
-          </div>
+        <div class="progress__spec">
+          <dt>Accelerator</dt>
+          <dd>FGG484 package with on-board DDR3, upgradable to 75T or 100T.</dd>
         </div>
-        <div class="product-card__action">
-          <span class="product-card__visit">iosbridge.com &rarr;</span>
+        <div class="progress__spec">
+          <dt>Status</dt>
+          <dd>DMA card first. Build log coming soon.</dd>
         </div>
-      </a>
+      </dl>
     </section>
 
     <section id="tiktok" class="cta-section">
@@ -1321,7 +1350,7 @@
           <h2 class="cta-panel__title text-gradient">The Build Logs</h2>
           <p class="cta-panel__text">Experience the engineering in motion.</p>
           <a href="https://www.tiktok.com/@whos_.daniel" target="_blank" class="cta-panel__btn">
-            <span>Follow on</span>
+            <span>Follow on TikTok</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px">
               <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
@@ -1333,12 +1362,34 @@
 
   </main>
 
+  <div class="chooser" id="tinyrv-chooser" role="dialog" aria-modal="true" aria-labelledby="tinyrv-chooser-title" aria-hidden="true">
+    <div class="chooser__sheet">
+      <div class="chooser__head">
+        <h2 class="chooser__title" id="tinyrv-chooser-title">tinyrv32e</h2>
+        <p class="chooser__text">Where would you like to go?</p>
+      </div>
+      <a class="chooser__option" href="https://app.tinytapeout.com/projects/6598" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2h2v3h2V2h2v3h2a2 2 0 0 1 2 2v2h3v2h-3v2h3v2h-3v2a2 2 0 0 1-2 2h-2v3h-2v-3h-2v3H9v-3H7a2 2 0 0 1-2-2v-2H2v-2h3v-2H2V9h3V7a2 2 0 0 1 2-2h2V2zm-2 5v10h10V7H7zm2 2h6v6H9V9z"/></svg>
+        <span class="chooser__label"><strong>Tiny Tapeout</strong><span>Project page and chip layout</span></span>
+        <span class="chooser__chev" aria-hidden="true">›</span>
+      </a>
+      <a class="chooser__option" href="https://github.com/dssoftx/tinyrv32e" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.6-2.67-.31-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.7.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        <span class="chooser__label"><strong>GitHub</strong><span>Verilog source, tests and toolchain</span></span>
+        <span class="chooser__chev" aria-hidden="true">›</span>
+      </a>
+      <button type="button" class="chooser__cancel" data-chooser-close>Cancel</button>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__copy">© DsSoft. All rights reserved.</p>
+      <p class="footer__copy">© 2026 DsSoft · Schaffhausen, Switzerland</p>
       <ul class="footer__links">
+        <li><a href="mailto:info@dssoft.ch">info@dssoft.ch</a></li>
+        <li><a href="https://github.com/dssoftx" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="reverse-engineering.html">Reverse engineering</a></li>
-        <li><a href="embedded-tooling.html">Tooling</a></li>
+        <li><a href="reverse-engineering.html#tooling">Tooling</a></li>
       </ul>
     </div>
   </footer>
@@ -1462,7 +1513,61 @@
       updateCardFades();
     }, { passive: true });
 
+
+    /* ── Link chooser ── */
+    let chooserOpen = null;
+    let chooserReturn = null;
+
+    function openChooser(id, trigger) {
+      const el = document.getElementById(id);
+      if (!el) return false;
+      chooserOpen = el;
+      chooserReturn = trigger;
+      el.classList.add('is-open');
+      el.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const first = el.querySelector('.chooser__option');
+      if (first) setTimeout(() => first.focus(), 50);
+      return true;
+    }
+
+    function closeChooser() {
+      if (!chooserOpen) return;
+      chooserOpen.classList.remove('is-open');
+      chooserOpen.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      chooserOpen = null;
+      if (chooserReturn) chooserReturn.focus({ preventScroll: true });
+    }
+
+    document.querySelectorAll('[data-chooser]').forEach(trigger => {
+      trigger.addEventListener('click', e => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+        if (openChooser(trigger.dataset.chooser, trigger)) e.preventDefault();
+      });
+    });
+
+    document.querySelectorAll('.chooser').forEach(el => {
+      el.addEventListener('click', e => {
+        if (e.target === el || e.target.closest('[data-chooser-close]')) closeChooser();
+      });
+      el.querySelectorAll('.chooser__option').forEach(a => a.addEventListener('click', () => setTimeout(closeChooser, 0)));
+    });
+
     document.addEventListener('keydown', e => {
+      if (!chooserOpen) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeChooser(); return; }
+      if (e.key === 'Tab') {
+        const items = Array.from(chooserOpen.querySelectorAll('a, button'));
+        const i = items.indexOf(document.activeElement);
+        e.preventDefault();
+        const next = e.shiftKey ? (i <= 0 ? items.length - 1 : i - 1) : (i + 1) % items.length;
+        items[next].focus();
+      }
+    }, true);
+
+    document.addEventListener('keydown', e => {
+      if (chooserOpen) return;
       if (!dotsWrap.classList.contains('is-visible')) return;
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
         e.preventDefault();

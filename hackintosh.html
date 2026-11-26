@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hackintosh Development — DsSoft</title>
-  <meta name="description" content="AMD Ryzen 5950X and RX 6750 XT running native macOS. Custom OpenCore EFI built from scratch — ACPI hot-patches, SSDTs, and kexts. Open-source on GitHub.">
+  <meta name="description" content="AMD Ryzen 5950X and RX 6750 XT, plus a ThinkPad X1 Carbon G11 with accelerated Iris Xe on macOS Tahoe. Custom OpenCore EFIs, ACPI hot-patches, SSDTs and kexts. Open source on GitHub.">
   <link rel="canonical" href="https://www.dssoft.ch/hackintosh.html">
   <meta property="og:site_name" content="DsSoft">
   <meta property="og:title" content="Hackintosh Development — DsSoft">
@@ -267,6 +267,7 @@
       .section { padding: var(--space-4xl) var(--space-md); }
     }
   </style>
+  <link rel="stylesheet" href="assets/css/boxless.css">
 </head>
 
 <body>
@@ -281,7 +282,7 @@
         <li><a href="index.html#tiktok">TikTok</a></li>
         <li><a href="hyperscooters.html">Hyperscooters</a></li>
         <li><a href="reverse-engineering.html">Reverse engineering</a></li>
-        <li><a href="https://t.me/the_hackintosh" target="_blank">Contact</a></li>
+        <li><a href="mailto:info@dssoft.ch">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -292,7 +293,7 @@
         <a href="index.html" class="back-link">&larr; Back to home</a>
         <div class="hero__badge">macOS on Custom Hardware</div>
         <h1 class="hero__headline text-gradient">Hackintosh. Done right.</h1>
-        <p class="hero__subtitle">AMD Ryzen 5950X and RX 6750 XT, fully running native macOS. Custom EFI built from scratch — ACPI hot-patches, SSDTs, and kexts — stable enough to daily-drive.</p>
+        <p class="hero__subtitle">A Ryzen 9 5950X desktop and a ThinkPad X1 Carbon with accelerated Iris Xe, both running native macOS. Custom EFIs built from scratch — ACPI hot-patches, SSDTs, and kexts — stable enough to daily-drive.</p>
         <a href="https://github.com/dssoftx/B550-5950X-6750XT-Hackintosh" target="_blank" class="hero__cta">View EFI on GitHub &rarr;</a>
       </div>
     </section>
@@ -369,24 +370,59 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="cta-panel reveal">
-        <h2 class="cta-panel__title text-gradient">Open-Source EFI</h2>
-        <p class="cta-panel__text">The complete EFI for this B550 · Ryzen 5950X · RX 6750 XT build is public on GitHub. All SSDTs, kexts, and a documented config.plist — fork it, adapt it, build your own.</p>
-        <a href="https://github.com/dssoftx/B550-5950X-6750XT-Hackintosh" target="_blank" class="cta-btn">
-          github.com/dssoftx/B550-5950X-6750XT-Hackintosh &rarr;
-        </a>
+    <section id="x1-carbon" class="x-section">
+      <div class="reveal">
+        <p class="x-eyebrow">ThinkPad X1 Carbon Gen 11</p>
+        <h2 class="x-title text-gradient">Iris Xe. Fully accelerated. On Tahoe.</h2>
+        <p class="x-lede">Metal, Core Animation and Liquid Glass on the Intel Iris Xe of an i7-1355U, under macOS Tahoe 26.7.1. Apple never shipped a driver for Raptor Lake, so this runs Apple's Tiger Lake Iris Xe driver on newer silicon.</p>
+        <p class="x-note">A port of JulioNectar's XPS 13 Plus work, which did the hard part. This fork adds the machine-specific half: a different CPU topology, GPU device ID and panel, and completely different ACPI, input, audio and firmware behaviour.</p>
+        <div class="x-links">
+          <a class="text-link" href="https://github.com/dssoftx/Hackintosh-X1Carbon-G11-IrisXe-Tahoe" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="text-link" href="https://www.reddit.com/r/hackintosh/comments/1xff415/thinkpad_x1_carbon_g11_i7_1355u_full_irisxe_accel/" target="_blank" rel="noopener">As seen on r/hackintosh</a>
+        </div>
       </div>
+      <dl class="x-specs reveal">
+        <div><dt>CPU</dt><dd>i7-1355U, 2P+8E, 12 threads</dd></div>
+        <div><dt>GPU</dt><dd>Iris Xe, 96 EU, <code>8086:A7A1</code></dd></div>
+        <div><dt>Display</dt><dd>1920×1200, 2-lane eDP</dd></div>
+        <div><dt>macOS</dt><dd>Tahoe 26.7.1 (25G241)</dd></div>
+      </dl>
+      <div class="reveal">
+        <h3 class="x-subhead">What it took.</h3>
+        <div class="x-grid">
+          <div>
+            <h4>A hang with no output.</h4>
+            <p>With <code>SetupVirtualMap</code> off, as upstream and Dortania recommend, this firmware hangs inside <code>ExitBootServices</code>. No verbose output, no panic. Turning it on fixed it.</p>
+          </div>
+          <div>
+            <h4>Panel registers from the firmware.</h4>
+            <p>Upstream hardcoded a 4-lane link and a backlight bit from its own panel. The patch reads both registers once from the firmware before anything writes them.</p>
+          </div>
+          <div>
+            <h4>ACPI that fights macOS.</h4>
+            <p>The touchpad's I²C controller zeroed its own BAR0 on D3 and never restored it, and its <code>_CRS</code> returned no I²C bus under Darwin. Two SSDTs fix both.</p>
+          </div>
+          <div>
+            <h4>Tahoe dropped AppleHDA.</h4>
+            <p>AppleALC alone is no longer enough on 26.7.1, because the driver it patches doesn't ship with the OS any more.</p>
+          </div>
+        </div>
+      </div>
+      <dl class="x-specs reveal" style="grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 0;">
+        <div><dt>Works</dt><dd>Metal, all 12 threads, audio, Wi-Fi, Bluetooth, trackpad with gestures, keyboard and TrackPoint, battery, webcam, sleep.</dd></div>
+        <div><dt>Not yet</dt><dd>Internal mic array, external displays, fingerprint. Brightness may cap around 50%.</dd></div>
+      </dl>
     </section>
+
   </main>
 
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__copy">© DsSoft</p>
+      <p class="footer__copy">© 2026 DsSoft · <a href="mailto:info@dssoft.ch">info@dssoft.ch</a></p>
       <ul class="footer__links">
         <li><a href="index.html">Home</a></li>
         <li><a href="reverse-engineering.html">Reverse engineering</a></li>
-        <li><a href="embedded-tooling.html">iOS Tooling</a></li>
+        <li><a href="reverse-engineering.html#tooling">iOS Tooling</a></li>
       </ul>
     </div>
   </footer>

@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reverse Engineering & Security — DsSoft</title>
-  <meta name="description" content="Independent security researcher with 5000+ hours in IDA Pro. Binary analysis, bootrom exploitation, Frida runtime instrumentation, DRM teardown, and iOS jailbreak research.">
+  <meta name="description" content="Independent security researcher with 5000+ hours in IDA Pro. Binary analysis, bootrom and iBoot research, Frida runtime instrumentation, and open-source iOS tooling.">
   <link rel="canonical" href="https://www.dssoft.ch/reverse-engineering.html">
   <meta property="og:site_name" content="DsSoft">
   <meta property="og:title" content="Reverse Engineering & Security — DsSoft">
-  <meta property="og:description" content="Independent security researcher with 5000+ hours in IDA Pro. Binary analysis, bootrom exploitation, Frida runtime instrumentation, and DRM teardown.">
+  <meta property="og:description" content="Independent security researcher with 5000+ hours in IDA Pro. Binary analysis, bootrom and iBoot research, Frida runtime instrumentation, and open-source iOS tooling.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.dssoft.ch/reverse-engineering.html">
   <meta property="og:image" content="https://www.dssoft.ch/assets/images/proto1.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Reverse Engineering & Security — DsSoft">
-  <meta name="twitter:description" content="Independent security researcher with 5000+ hours in IDA Pro. Binary analysis, bootrom exploitation, Frida runtime instrumentation, and DRM teardown.">
+  <meta name="twitter:description" content="Independent security researcher with 5000+ hours in IDA Pro. Binary analysis, bootrom and iBoot research, Frida runtime instrumentation, and open-source iOS tooling.">
   <meta name="twitter:image" content="https://www.dssoft.ch/assets/images/proto1.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,6 +87,22 @@
     .cta-panel__title { margin-bottom: var(--space-md); }
     .cta-panel__text { font-size: 1.125rem; max-width: 700px; margin: 0 auto; line-height: 1.8; }
 
+    .tooling__header { max-width: 680px; margin-bottom: var(--space-3xl); }
+    .tooling__eyebrow { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+    .tool { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--space-2xl); padding: var(--space-2xl) 0 var(--space-3xl); border-top: 1px solid rgba(255,255,255,0.14); }
+    .tool__name { font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: var(--space-sm); word-break: break-word; }
+    .tool__lede { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 600; letter-spacing: -0.02em; color: var(--text-primary); line-height: 1.3; margin-bottom: var(--space-md); }
+    .tool__desc { font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--space-xl); }
+    .tool__specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); }
+    .tool__specs dt { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .tool__specs dd { font-size: 0.9375rem; color: var(--text-primary); line-height: 1.45; }
+    .text-link { font-size: 1.0625rem; font-weight: 500; color: #2997FF; }
+    .text-link:hover { text-decoration: underline; }
+    .text-link::after { content: ' \203A'; font-size: 1.15em; }
+    @media (max-width: 768px) {
+      .tool { grid-template-columns: 1fr; gap: var(--space-md); }
+      .tool__specs { grid-template-columns: 1fr 1fr; }
+    }
     .reveal { opacity: 0; transform: translateY(48px); transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
@@ -118,6 +134,7 @@
       .section { padding: var(--space-4xl) var(--space-md); }
     }
   </style>
+  <link rel="stylesheet" href="assets/css/boxless.css">
 </head>
 <body>
   <header class="navbar" id="navbar">
@@ -129,7 +146,7 @@
         <li><a href="index.html#tiktok">TikTok</a></li>
         <li><a href="hyperscooters.html">Hyperscooters</a></li>
         <li><a href="reverse-engineering.html">Reverse engineering</a></li>
-        <li><a href="https://t.me/the_hackintosh" target="_blank">Contact</a></li>
+        <li><a href="mailto:info@dssoft.ch">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -141,7 +158,7 @@
         <a href="index.html" class="back-link">&larr; Back to home</a>
         <div class="hero__badge">Security Research</div>
         <h1 class="hero__headline text-gradient">Reverse engineering & security</h1>
-        <p class="hero__subtitle">Specializing in binary analysis and exploit research. 5000+ hours defeating multi-layer commercial encryption and DRM systems — from bootrom to runtime.</p>
+        <p class="hero__subtitle">Specializing in binary analysis and vulnerability research. 5000+ hours in IDA Pro — from bootrom to runtime.</p>
       </div>
     </section>
 
@@ -170,7 +187,7 @@
         <div class="feature-text">
           <span class="feature-label">03. Development Hardware</span>
           <h2 class="text-gradient">Native Root Authority.</h2>
-          <p>For specialized research that requires bypassing standard retail restrictions, we utilize Internal Development (Dev-fused) prototypes. These units grant native, unauthorized code execution and unrestricted root access, allowing for deep-kernel debugging and hardware-level security auditing that retail units cannot provide.</p>
+          <p>For research that retail hardware can't support, I work with development-fused units. They allow unsigned code execution and full debug access, which makes kernel debugging and hardware-level security auditing possible.</p>
         </div>
       </div>
       <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
@@ -178,21 +195,105 @@
       </div>
     </section>
 
-    <section id="assessments" class="section">
-      <div class="cta-panel reveal">
-        <h2 class="cta-panel__title text-gradient">Penetration testing & assessments</h2>
-        <p class="cta-panel__text">Full-scope security assessments, vulnerability discovery, exploit development, and secure boot bypass research. Work is conducted under clear scope and confidentiality — suitable for product security teams and authorized engagements.</p>
+    <section id="prototypes" class="x-section">
+      <div class="reveal">
+        <p class="x-eyebrow">Prototypes</p>
+        <h2 class="x-title text-gradient">Hardware Apple never shipped.</h2>
+        <p class="x-lede">Engineering units on development-fused silicon, running factory and internal builds. Each one is documented, and dumps are published where I can share them.</p>
+      </div>
+      <div class="reveal">
+        <h3 class="x-subhead">iPad mini 4 engineering unit.</h3>
+        <p class="x-note">An iPad5,2 running <code>12H60160o</code>, an internal NonUI diagnostics build based on iOS 8.4 that hadn't been dumped before. It carries the Touch ID calibration station and A8-era codenamed diags, and has 1 GB of DRAM where retail units have 2 GB. Credited on The Apple Wiki.</p>
+        <div class="x-links">
+          <a class="text-link" href="protos/index.html">Read the full record</a>
+          <a class="text-link" href="https://theapplewiki.com/wiki/CopperTianshan_12H60160o" target="_blank" rel="noopener">See it on The Apple Wiki</a>
+        </div>
+        <dl class="x-specs">
+          <div><dt>Model</dt><dd>iPad5,2 (J97AP)</dd></div>
+          <div><dt>Build</dt><dd>12H60160o, NonUI</dd></div>
+          <div><dt>SoC</dt><dd>Apple A8 (T7000)</dd></div>
+          <div><dt>Fusing</dt><dd>CPFM 01, dev-fused</dd></div>
+        </dl>
+      </div>
+      <div class="tools">
+        <article class="tool reveal">
+          <div class="tool__head"><h3 class="tool__name">iPhone 15 Plus</h3></div>
+          <div class="tool__body">
+            <p class="tool__lede">PROTO2, CPFM 00.</p>
+            <p class="tool__desc">The A16 bring-up device behind iBootPatcher64e and the SSH ramdisk below.</p>
+          </div>
+        </article>
+        <article class="tool reveal">
+          <div class="tool__head"><h3 class="tool__name">iPhone 8</h3></div>
+          <div class="tool__body">
+            <p class="tool__lede">Development-mode engineering unit.</p>
+            <p class="tool__desc">A D201AP with a 993- engineering part number, running the iOS 11.0 GM seed 15A369.</p>
+          </div>
+        </article>
+        <article class="tool reveal">
+          <div class="tool__head"><h3 class="tool__name">iPad 2</h3></div>
+          <div class="tool__body">
+            <p class="tool__lede">Pre-launch, February 2011.</p>
+            <p class="tool__desc">An EVT/DVT-era iPad2,1 with an iOS 4.3-era NonUI factory diagnostics image and the full debug and DTrace engineering toolchain.</p>
+          </div>
+        </article>
       </div>
     </section>
+
+    <section id="tooling" class="section tooling">
+      <header class="tooling__header reveal">
+        <p class="tooling__eyebrow">Open source</p>
+        <h2 class="text-gradient">The tools.</h2>
+        <p>Three tools for the bootloader, debug hardware and ramdisk layers of iOS. Built for researchers, public on GitHub.</p>
+      </header>
+      <div class="tools">
+        <article class="tool reveal">
+          <div class="tool__head">
+            <h3 class="tool__name">iBootPatcher64e</h3>
+            <a class="text-link" href="https://github.com/dssoftx/iBootPatcher64e" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+          <div class="tool__body">
+            <p class="tool__lede">Dynamic patcher for arm64e iBoot.</p>
+            <p class="tool__desc">Finds patch sites in iBSS and iBEC by scanning for PACIBSP at runtime instead of relying on hardcoded offsets, so it carries across iBoot versions. Applies four patches: signature check, kernel debug, custom boot-args and image type unlock. Requires a dev-fused device.</p>
+            <dl class="tool__specs"><div><dt>Target</dt><dd>iPhone 15 Plus (d38), arm64e</dd></div><div><dt>Confirmed</dt><dd>iBoot 10151.2.12, iOS 17.0</dd></div><div><dt>Language</dt><dd>Python</dd></div></dl>
+          </div>
+        </article>
+
+        <article class="tool reveal">
+          <div class="tool__head">
+            <h3 class="tool__name">astrisprobepatcher</h3>
+            <a class="text-link" href="https://github.com/dssoftx/astrisprobepatcher" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+          <div class="tool__body">
+            <p class="tool__lede">Retail cables, recognised as debug probes.</p>
+            <p class="tool__desc">Patches the firmware of Apple technician cables so Astris accepts them. SNR/Nova (Lightning) gets a one-byte PID change, 0x1624 → 0x1621, to appear as Kanzi. UDT (USB-C) is spoofed as Chimp, 0x168C → 0x162C. Fix the CRC afterwards with kblcrcfix.</p>
+            <dl class="tool__specs"><div><dt>Cables</dt><dd>SNR/Nova (Lightning), UDT (USB-C)</dd></div><div><dt>Confirmed</dt><dd>SNR v1.07, UDT v1.14</dd></div><div><dt>Language</dt><dd>Python</dd></div></dl>
+          </div>
+        </article>
+
+        <article class="tool reveal">
+          <div class="tool__head">
+            <h3 class="tool__name">iPhone15PlusSSHRD</h3>
+            <a class="text-link" href="https://github.com/dssoftx/iPhone15PlusSSHRD" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+          <div class="tool__body">
+            <p class="tool__lede">An SSH shell, straight from RAM.</p>
+            <p class="tool__desc">Boots a custom ramdisk over USB and exposes SSH for low-level file system access, without touching internal storage. Requires a dev-fused device. Not for retail hardware.</p>
+            <dl class="tool__specs"><div><dt>Target</dt><dd>iPhone 15 Plus (d38), iOS 17.0</dd></div><div><dt>Device</dt><dd>CPFM 0x00 prototype</dd></div><div><dt>Method</dt><dd>USB ramdisk boot</dd></div></dl>
+          </div>
+        </article>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__copy">© DsSoft</p>
+      <p class="footer__copy">© 2026 DsSoft · <a href="mailto:info@dssoft.ch">info@dssoft.ch</a></p>
       <ul class="footer__links">
         <li><a href="index.html">Home</a></li>
         <li><a href="pcb-design.html">PCB design</a></li>
-        <li><a href="custom-tooling.html">Tooling</a></li>
+        <li><a href="reverse-engineering.html#tooling">Tooling</a></li>
       </ul>
     </div>
   </footer>
