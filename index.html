@@ -1035,6 +1035,136 @@
       background: #fff;
       transform: scale(1.5);
     }
+    /* ── Link chooser (glass) ── */
+    .chooser {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.45);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s var(--ease-out-expo), visibility 0s linear 0.3s;
+    }
+
+    .chooser.is-open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s var(--ease-out-expo), visibility 0s;
+    }
+
+    .chooser__sheet {
+      width: min(380px, 100%);
+      background: rgba(36, 36, 40, 0.55);
+      -webkit-backdrop-filter: saturate(180%) blur(40px);
+      backdrop-filter: saturate(180%) blur(40px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+      transform: scale(0.94);
+      transition: transform 0.45s var(--ease-out-expo);
+    }
+
+    .chooser.is-open .chooser__sheet {
+      transform: scale(1);
+    }
+
+    .chooser__head {
+      padding: 1.75rem 1.5rem 1.25rem;
+      text-align: center;
+    }
+
+    .chooser__title {
+      font-size: 1.1875rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .chooser__text {
+      font-size: 0.875rem;
+      color: rgba(235, 235, 245, 0.6);
+    }
+
+    .chooser__option {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      width: 100%;
+      padding: 0.95rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      text-align: left;
+      transition: background var(--duration-fast);
+    }
+
+    .chooser__option:hover,
+    .chooser__option:focus-visible {
+      background: rgba(255, 255, 255, 0.07);
+      outline: none;
+    }
+
+    .chooser__option svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      fill: currentColor;
+      opacity: 0.9;
+    }
+
+    .chooser__label {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chooser__label strong {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .chooser__label span {
+      font-size: 0.8125rem;
+      color: rgba(235, 235, 245, 0.6);
+    }
+
+    .chooser__chev {
+      color: rgba(235, 235, 245, 0.35);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .chooser__cancel {
+      display: block;
+      width: 100%;
+      padding: 0.95rem 1.5rem;
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: none;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2997FF;
+      cursor: pointer;
+      transition: background var(--duration-fast);
+    }
+
+    .chooser__cancel:hover,
+    .chooser__cancel:focus-visible {
+      background: rgba(255, 255, 255, 0.07);
+      outline: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .chooser, .chooser__sheet { transition: none; }
+    }
   </style>
   <link rel="stylesheet" href="assets/css/boxless.css">
 </head>
@@ -1093,7 +1223,7 @@
 
       <div id="capabilities-snap">
 
-        <a href="https://app.tinytapeout.com/projects/6598" target="_blank" rel="noopener" class="capability-card" id="cap-0" style="--bg-image: url('./assets/images/tinyrv32e-gds.jpg');">
+        <a href="https://app.tinytapeout.com/projects/6598" target="_blank" rel="noopener" class="capability-card" id="cap-0" data-chooser="tinyrv-chooser" aria-haspopup="dialog" style="--bg-image: url('./assets/images/tinyrv32e-gds.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
@@ -1102,7 +1232,7 @@
             <span class="capability-card__eyebrow">Silicon · RISC-V</span>
             <h3 class="capability-card__title text-gradient">tinyrv32e</h3>
             <p class="capability-card__desc">A multi-cycle RV32E CPU, written from scratch in Verilog. Runs C straight from SPI flash at 25 MHz. Taping out on Tiny Tapeout GF 26c (GF180MCU, 2×2 tiles), sponsored by SwissChips at ETH Zürich.</p>
-            <span class="capability-card__link">See it on Tiny Tapeout <span aria-hidden="true">→</span></span>
+            <span class="capability-card__link">Explore the chip <span aria-hidden="true">→</span></span>
           </div>
           <div class="scroll-hint" id="scroll-hint">
             <span class="scroll-hint__label">Scroll</span>
@@ -1231,6 +1361,26 @@
     </section>
 
   </main>
+
+  <div class="chooser" id="tinyrv-chooser" role="dialog" aria-modal="true" aria-labelledby="tinyrv-chooser-title" aria-hidden="true">
+    <div class="chooser__sheet">
+      <div class="chooser__head">
+        <h2 class="chooser__title" id="tinyrv-chooser-title">tinyrv32e</h2>
+        <p class="chooser__text">Where would you like to go?</p>
+      </div>
+      <a class="chooser__option" href="https://app.tinytapeout.com/projects/6598" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2h2v3h2V2h2v3h2a2 2 0 0 1 2 2v2h3v2h-3v2h3v2h-3v2a2 2 0 0 1-2 2h-2v3h-2v-3h-2v3H9v-3H7a2 2 0 0 1-2-2v-2H2v-2h3v-2H2V9h3V7a2 2 0 0 1 2-2h2V2zm-2 5v10h10V7H7zm2 2h6v6H9V9z"/></svg>
+        <span class="chooser__label"><strong>Tiny Tapeout</strong><span>Project page and chip layout</span></span>
+        <span class="chooser__chev" aria-hidden="true">›</span>
+      </a>
+      <a class="chooser__option" href="https://github.com/dssoftx/tinyrv32e" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.6-2.67-.31-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.7.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        <span class="chooser__label"><strong>GitHub</strong><span>Verilog source, tests and toolchain</span></span>
+        <span class="chooser__chev" aria-hidden="true">›</span>
+      </a>
+      <button type="button" class="chooser__cancel" data-chooser-close>Cancel</button>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="footer__inner">
@@ -1363,7 +1513,61 @@
       updateCardFades();
     }, { passive: true });
 
+
+    /* ── Link chooser ── */
+    let chooserOpen = null;
+    let chooserReturn = null;
+
+    function openChooser(id, trigger) {
+      const el = document.getElementById(id);
+      if (!el) return false;
+      chooserOpen = el;
+      chooserReturn = trigger;
+      el.classList.add('is-open');
+      el.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const first = el.querySelector('.chooser__option');
+      if (first) setTimeout(() => first.focus(), 50);
+      return true;
+    }
+
+    function closeChooser() {
+      if (!chooserOpen) return;
+      chooserOpen.classList.remove('is-open');
+      chooserOpen.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      chooserOpen = null;
+      if (chooserReturn) chooserReturn.focus({ preventScroll: true });
+    }
+
+    document.querySelectorAll('[data-chooser]').forEach(trigger => {
+      trigger.addEventListener('click', e => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+        if (openChooser(trigger.dataset.chooser, trigger)) e.preventDefault();
+      });
+    });
+
+    document.querySelectorAll('.chooser').forEach(el => {
+      el.addEventListener('click', e => {
+        if (e.target === el || e.target.closest('[data-chooser-close]')) closeChooser();
+      });
+      el.querySelectorAll('.chooser__option').forEach(a => a.addEventListener('click', () => setTimeout(closeChooser, 0)));
+    });
+
     document.addEventListener('keydown', e => {
+      if (!chooserOpen) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeChooser(); return; }
+      if (e.key === 'Tab') {
+        const items = Array.from(chooserOpen.querySelectorAll('a, button'));
+        const i = items.indexOf(document.activeElement);
+        e.preventDefault();
+        const next = e.shiftKey ? (i <= 0 ? items.length - 1 : i - 1) : (i + 1) % items.length;
+        items[next].focus();
+      }
+    }, true);
+
+    document.addEventListener('keydown', e => {
+      if (chooserOpen) return;
       if (!dotsWrap.classList.contains('is-visible')) return;
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
         e.preventDefault();
