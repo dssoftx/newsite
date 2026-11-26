@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /prevprod/
-Disallow: /hsc/
 
 Sitemap: https://www.dssoft.ch/sitemap.xml
