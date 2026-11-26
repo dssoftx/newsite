@@ -649,275 +649,142 @@
       }
     }
 
-    /* ── Secondary tiles ── */
-    .secondary-section {
+    /* ── Product (iOSBridge) ── */
+    .product {
       padding: var(--space-5xl) var(--space-xl);
-      max-width: 1200px;
+      max-width: 980px;
       margin: 0 auto;
+      text-align: center;
     }
 
-    .secondary-section__header {
-      text-align: center;
+    .product__icon {
+      width: 112px;
+      height: 112px;
+      border-radius: 25px;
+      display: block;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .product__eyebrow {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .product__title {
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+      margin-bottom: var(--space-md);
+    }
+
+    .product__tagline {
+      font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: var(--space-lg);
+    }
+
+    .product__desc {
+      max-width: 620px;
+      margin: 0 auto var(--space-xl);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+
+    .product__links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2xl);
       margin-bottom: var(--space-3xl);
     }
 
-    .secondary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 560px));
-      justify-content: center;
-      gap: var(--space-lg);
+    .text-link {
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: #2997FF;
     }
 
-    @media (max-width: 768px) {
-      .secondary-grid {
-        grid-template-columns: 1fr;
-      }
+    .text-link:hover {
+      text-decoration: underline;
     }
 
-    .glass-tile {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid var(--border-subtle);
-      border-radius: 32px;
-      padding: 0;
-      overflow: hidden;
-      text-decoration: none;
-      transition: all 0.5s var(--ease-out-expo);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+    .text-link::after {
+      content: ' \203A';
+      font-size: 1.15em;
     }
 
-    .glass-tile:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-5px);
-    }
-
-    .glass-tile__preview {
-      width: 100%;
-      height: 190px;
-      background-size: cover;
-      background-position: center top;
-      flex-shrink: 0;
-      position: relative;
-    }
-
-    .glass-tile__preview::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.65) 100%);
-    }
-
-    .glass-tile__preview--code {
-      display: flex;
-      align-items: flex-end;
-      padding: var(--space-lg) var(--space-2xl);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(10, 132, 255, 0.18) 0%, transparent 55%),
-        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 22px),
-        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 22px),
-        #0b0b0d;
-    }
-
-    .glass-tile__preview--code span {
-      position: relative;
-      z-index: 1;
-      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    .product__platforms {
       font-size: 0.8125rem;
-      color: rgba(255, 255, 255, 0.55);
+      color: var(--text-muted);
+      letter-spacing: 0.01em;
     }
 
-    .glass-tile__body {
-      padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
-      display: flex;
-      flex-direction: column;
-      flex: 1;
+    /* ── In progress ── */
+    .progress {
+      padding: var(--space-4xl) var(--space-xl) var(--space-5xl);
+      max-width: 980px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-subtle);
     }
 
-    .glass-tile__title {
-      font-size: 1.25rem;
+    .progress__eyebrow {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #F56300;
+      margin-bottom: var(--space-sm);
+    }
+
+    .progress__title {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: var(--space-md);
+    }
+
+    .progress__lede {
+      max-width: 560px;
+      font-size: clamp(1.0625rem, 1.6vw, 1.3125rem);
+      line-height: 1.5;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .progress__specs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-2xl);
+    }
+
+    .progress__spec {
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .progress__spec dt {
+      font-size: 1.0625rem;
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: var(--space-xs);
     }
 
-    .glass-tile__desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      flex: 1;
-    }
-
-    .glass-tile__eyebrow {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: var(--space-sm);
-    }
-
-    .glass-tile__cta {
-      display: inline-block;
-      margin-top: var(--space-lg);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      transition: color var(--duration-fast);
-    }
-
-    .glass-tile:hover .glass-tile__cta {
-      color: var(--text-primary);
-    }
-
-    /* ── Product card ── */
-    .products-section {
-      padding: 0 var(--space-xl) var(--space-5xl);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .products-section__header {
-      text-align: center;
-      margin-bottom: var(--space-3xl);
-    }
-
-    .product-card {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2xl);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      border-radius: 28px;
-      padding: var(--space-2xl);
-      text-decoration: none;
-      transition: all 0.5s var(--ease-out-expo);
-    }
-
-    .product-card:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(255, 255, 255, 0.18);
-      transform: translateY(-3px);
-    }
-
-    .product-card__icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 18px;
-      overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    .product-card__icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .product-card__body { flex: 1; min-width: 0; }
-
-    .product-card__eyebrow {
-      font-size: 0.68rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .product-card__name {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.03em;
-      margin-bottom: var(--space-sm);
-    }
-
-    .product-card__desc {
+    .progress__spec dd {
       font-size: 0.9375rem;
+      line-height: 1.55;
       color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: var(--space-md);
-    }
-
-    .product-card__tags { display: flex; flex-wrap: wrap; gap: 8px; }
-
-    .product-tag {
-      display: inline-block;
-      padding: 4px 11px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
-
-    .product-card__action { flex-shrink: 0; }
-
-    .product-card__visit {
-      display: inline-flex;
-      align-items: center;
-      padding: 12px 22px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      white-space: nowrap;
-      transition: all 0.3s var(--ease-out-expo);
-    }
-
-    .product-card:hover .product-card__visit {
-      background: rgba(255, 255, 255, 0.13);
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-
-    .product-card__platforms {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px;
-      margin-top: var(--space-md);
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .platform-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 10px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    .platform-pill svg {
-      width: 11px;
-      height: 11px;
-      fill: currentColor;
-      flex-shrink: 0;
-      opacity: 0.7;
     }
 
     @media (max-width: 768px) {
-      .glass-tile { border-radius: 24px; }
-      .glass-tile__body { padding: var(--space-lg) var(--space-xl) var(--space-xl); }
-      .product-card { flex-direction: column; align-items: flex-start; gap: var(--space-lg); }
-      .product-card__action { align-self: stretch; }
-      .product-card__visit { width: 100%; justify-content: center; }
+      .progress__specs { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .product__links { flex-direction: column; gap: var(--space-md); }
     }
 
     /* ── CTA Panel ── */
@@ -1221,7 +1088,7 @@
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">01 / 07</div>
+          <div class="capability-card__counter">01 / 06</div>
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">Silicon · RISC-V</span>
             <h3 class="capability-card__title text-gradient">tinyrv32e</h3>
@@ -1238,7 +1105,7 @@
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">02 / 07</div>
+          <div class="capability-card__counter">02 / 06</div>
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">Security Research</span>
             <h3 class="capability-card__title text-gradient">Reverse engineering</h3>
@@ -1247,24 +1114,12 @@
           </div>
         </a>
 
-        <a href="embedded-tooling.html" class="capability-card" id="cap-2" style="--bg-image: url('./assets/images/proto2.jpg');">
-          <div class="capability-card__bg"></div>
-          <div class="capability-card__scrim-top"></div>
-          <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">03 / 07</div>
-          <div class="capability-card__content">
-            <span class="capability-card__eyebrow">iOS Security · Open Source</span>
-            <h3 class="capability-card__title text-gradient">iOS Security Tooling</h3>
-            <p class="capability-card__desc">A 64-bit iBoot patcher, an Astris probe patcher and an SSH ramdisk for iPhone 15 Plus. Built for researchers, public on GitHub.</p>
-            <span class="capability-card__link">View the repos <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
 
-        <a href="battery.html" class="capability-card" id="cap-3" style="--bg-image: url('./assets/images/batt1.jpg');">
+        <a href="battery.html" class="capability-card" id="cap-2" style="--bg-image: url('./assets/images/batt1.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">04 / 07</div>
+          <div class="capability-card__counter">03 / 06</div>
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">Energy Systems</span>
             <h3 class="capability-card__title text-gradient">Battery Building</h3>
@@ -1273,11 +1128,11 @@
           </div>
         </a>
 
-        <a href="hyperscooters.html" class="capability-card" id="cap-4" style="--bg-image: url('./assets/images/lime5.jpg');">
+        <a href="hyperscooters.html" class="capability-card" id="cap-3" style="--bg-image: url('./assets/images/lime5.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">05 / 07</div>
+          <div class="capability-card__counter">04 / 06</div>
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">Mobility</span>
             <h3 class="capability-card__title text-gradient">Hyperscooter Design</h3>
@@ -1286,11 +1141,11 @@
           </div>
         </a>
 
-        <a href="pcb-design.html" class="capability-card" id="cap-5" style="--bg-image: url('./assets/images/pcb1.jpg');">
+        <a href="pcb-design.html" class="capability-card" id="cap-4" style="--bg-image: url('./assets/images/pcb1.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">06 / 07</div>
+          <div class="capability-card__counter">05 / 06</div>
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">Hardware</span>
             <h3 class="capability-card__title text-gradient">PCB Design</h3>
@@ -1299,11 +1154,11 @@
           </div>
         </a>
 
-        <a href="hackintosh.html" class="capability-card" id="cap-6" style="--bg-image: url('./assets/images/headerhack.jpg');">
+        <a href="hackintosh.html" class="capability-card" id="cap-5" style="--bg-image: url('./assets/images/headerhack.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">07 / 07</div>
+          <div class="capability-card__counter">06 / 06</div>
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">OpenCore · AMD · macOS</span>
             <h3 class="capability-card__title text-gradient">Hackintosh Engineering</h3>
@@ -1317,68 +1172,36 @@
 
     <div class="card-dots" id="card-dots"></div>
 
-    <section class="secondary-section">
-      <div class="secondary-section__header reveal">
-        <h2 class="text-gradient">In Progress</h2>
+    <section class="product reveal" id="iosbridge">
+      <img class="product__icon" src="assets/images/Icon.png" alt="">
+      <p class="product__eyebrow">Open source · Cross-platform</p>
+      <h2 class="product__title text-gradient">iOSBridge</h2>
+      <p class="product__tagline">Your iPhone. Any computer.<br>No iTunes.</p>
+      <p class="product__desc">A device manager built on libimobiledevice. Restore and flash firmware, back up and browse files, drop into recovery or DFU, and open SSH over USB.</p>
+      <div class="product__links">
+        <a class="text-link" href="https://iosbridge.com" target="_blank" rel="noopener">Learn more</a>
       </div>
-      <div class="secondary-grid">
-        <div class="glass-tile reveal">
-          <div class="glass-tile__preview glass-tile__preview--code" aria-hidden="true"><span>XC7A35T · PCIe · M.2</span></div>
-          <div class="glass-tile__body">
-            <div class="glass-tile__eyebrow">FPGA · PCIe · In progress</div>
-            <h4 class="glass-tile__title">M.2 FPGA Boards</h4>
-            <p class="glass-tile__desc">Two Artix-7 boards in M.2 form factor: a PCIe DMA card with FT601 USB 3 and a USB-C side channel, and an accelerator with on-board DDR3. Built to learn PCIe from the ground up.</p>
-            <span class="glass-tile__cta">Build log coming soon</span>
-          </div>
-        </div>
-      </div>
+      <p class="product__platforms">macOS (Apple silicon and Intel) · Windows · Linux (AppImage and .deb)</p>
     </section>
 
-    <section class="products-section">
-      <div class="products-section__header reveal">
-        <h2 class="text-gradient">Active Products</h2>
-      </div>
-      <a href="https://iosbridge.com" target="_blank" class="product-card reveal">
-        <div class="product-card__icon">
-          <img src="assets/images/Icon.png" alt="iOSBridge">
+    <section class="progress reveal">
+      <p class="progress__eyebrow">In progress</p>
+      <h2 class="progress__title text-gradient">M.2 FPGA boards.</h2>
+      <p class="progress__lede">Two Artix-7 boards in M.2 form factor, built to learn PCIe from the ground up.</p>
+      <dl class="progress__specs">
+        <div class="progress__spec">
+          <dt>DMA card</dt>
+          <dd>XC7A35T with FT601 USB 3 and a USB-C side channel.</dd>
         </div>
-        <div class="product-card__body">
-          <div class="product-card__eyebrow">Open Source · Cross-platform</div>
-          <div class="product-card__name">iOSBridge</div>
-          <p class="product-card__desc">The open-source alternative to 3uTools. Full iDevice management on top of libimobiledevice — restore and flash, backups, file access, recovery and DFU tooling, and SSH over USB. No iTunes, no telemetry, no nonsense. Built because the existing tools weren't good enough.</p>
-          <div class="product-card__tags">
-            <span class="product-tag">3uTools Alternative</span>
-            <span class="product-tag">Restore &amp; DFU</span>
-            <span class="product-tag">iDevice Management</span>
-            <span class="product-tag">Open Source</span>
-          </div>
-          <div class="product-card__platforms">
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              macOS ARM
-            </span>
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              macOS Intel
-            </span>
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M3 12V6.75L9 5.43V11.91L3 12M20 3V11.75L11 11.91V5.06L20 3M3 13L9 13.09V19.9L3 18.75V13M20 13.25V22L11 20.94V13.09L20 13.25Z"/></svg>
-              Windows
-            </span>
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M20 19H4V5H20V19M20 3H4C2.9 3 2 3.9 2 5V19A2 2 0 004 21H20A2 2 0 0022 19V5C22 3.9 21.1 3 20 3M7 7L5.5 8.5L7 10L5.5 11.5L7 13L3.5 9.5L7 6V7M11.5 15L13 13H9L11.5 15Z"/></svg>
-              Linux AppImage
-            </span>
-            <span class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M20 19H4V5H20V19M20 3H4C2.9 3 2 3.9 2 5V19A2 2 0 004 21H20A2 2 0 0022 19V5C22 3.9 21.1 3 20 3M7 7L5.5 8.5L7 10L5.5 11.5L7 13L3.5 9.5L7 6V7M11.5 15L13 13H9L11.5 15Z"/></svg>
-              Linux .deb
-            </span>
-          </div>
+        <div class="progress__spec">
+          <dt>Accelerator</dt>
+          <dd>FGG484 package with on-board DDR3, upgradable to 75T or 100T.</dd>
         </div>
-        <div class="product-card__action">
-          <span class="product-card__visit">iosbridge.com &rarr;</span>
+        <div class="progress__spec">
+          <dt>Status</dt>
+          <dd>DMA card first. Build log coming soon.</dd>
         </div>
-      </a>
+      </dl>
     </section>
 
     <section id="tiktok" class="cta-section">
@@ -1407,7 +1230,7 @@
         <li><a href="mailto:info@dssoft.ch">info@dssoft.ch</a></li>
         <li><a href="https://github.com/dssoftx" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="reverse-engineering.html">Reverse engineering</a></li>
-        <li><a href="embedded-tooling.html">Tooling</a></li>
+        <li><a href="reverse-engineering.html#tooling">Tooling</a></li>
       </ul>
     </div>
   </footer>
