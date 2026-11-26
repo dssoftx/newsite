@@ -5,17 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DsSoft — Full-stack hardware & software</title>
-  <meta name="description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taped out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
+  <meta name="description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taping out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
   <link rel="canonical" href="https://www.dssoft.ch/">
   <meta property="og:site_name" content="DsSoft">
   <meta property="og:title" content="DsSoft — Full-stack hardware & software">
-  <meta property="og:description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taped out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
+  <meta property="og:description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taping out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.dssoft.ch/">
   <meta property="og:image" content="https://www.dssoft.ch/assets/images/rawdev.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DsSoft — Full-stack hardware & software">
-  <meta name="twitter:description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taped out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
+  <meta name="twitter:description" content="Systems and firmware engineer in Schaffhausen, Switzerland. iOS security research, a RISC-V CPU taping out on Tiny Tapeout, PCB design, custom battery packs and 140 km/h hyperscooters.">
   <meta name="twitter:image" content="https://www.dssoft.ch/assets/images/rawdev.jpg">
   <script type="application/ld+json">
   {
@@ -663,7 +663,8 @@
 
     .secondary-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 560px));
+      justify-content: center;
       gap: var(--space-lg);
     }
 
@@ -1116,6 +1117,12 @@
       }
     }
 
+    @media (max-width: 768px) {
+      .scroll-hint {
+        display: none;
+      }
+    }
+
     .scroll-hint.is-hidden {
       opacity: 0 !important;
       transition: opacity 0.4s ease;
@@ -1183,7 +1190,7 @@
       </div>
       <div class="hero__content">
         <h1 class="hero__headline text-gradient">From silicon to runtime. Complete system mastery.</h1>
-        <p class="hero__subtitle">iOS security research, a RISC-V CPU on real silicon, PCB design, battery building
+        <p class="hero__subtitle">iOS security research, a RISC-V CPU headed for silicon, PCB design, battery building
           and hyperscooters to 140 km/h.</p>
         <a href="#capabilities" class="hero__cta">Explore Capabilities</a>
       </div>
@@ -1194,7 +1201,7 @@
         <div class="metrics__item reveal"><span class="metrics__value">5000+</span><span class="metrics__label">Hours
             IDA Pro</span></div>
         <div class="metrics__item reveal reveal--stagger-1"><span class="metrics__value">RV32E</span><span
-            class="metrics__label">Own CPU on silicon</span></div>
+            class="metrics__label">Own CPU in tapeout</span></div>
         <div class="metrics__item reveal reveal--stagger-2"><span class="metrics__value">450A</span><span
             class="metrics__label">VESC builds</span></div>
         <div class="metrics__item reveal reveal--stagger-3"><span class="metrics__value">140 km/h</span><span
@@ -1210,17 +1217,16 @@
 
       <div id="capabilities-snap">
 
-        <a href="battery.html" class="capability-card" id="cap-0" style="--bg-image: url('./assets/images/batt1.jpg');">
+        <a href="https://app.tinytapeout.com/projects/6598" target="_blank" rel="noopener" class="capability-card" id="cap-0" style="--bg-image: url('./assets/images/tinyrv32e-gds.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">01 / 04</div>
+          <div class="capability-card__counter">01 / 07</div>
           <div class="capability-card__content">
-            <span class="capability-card__eyebrow">Energy Systems</span>
-            <h3 class="capability-card__title text-gradient">Battery Building</h3>
-            <p class="capability-card__desc">40S+ high-discharge packs engineered for hyperscooters and DIY EV projects.
-            </p>
-            <span class="capability-card__link">View Engineering Process <span aria-hidden="true">→</span></span>
+            <span class="capability-card__eyebrow">Silicon · RISC-V</span>
+            <h3 class="capability-card__title text-gradient">tinyrv32e</h3>
+            <p class="capability-card__desc">A multi-cycle RV32E CPU, written from scratch in Verilog. Runs C straight from SPI flash at 25 MHz. Taping out on Tiny Tapeout GF 26c (GF180MCU, 2×2 tiles), sponsored by SwissChips at ETH Zürich.</p>
+            <span class="capability-card__link">See it on Tiny Tapeout <span aria-hidden="true">→</span></span>
           </div>
           <div class="scroll-hint" id="scroll-hint">
             <span class="scroll-hint__label">Scroll</span>
@@ -1228,27 +1234,11 @@
           </div>
         </a>
 
-        <a href="hyperscooters.html" class="capability-card" id="cap-1"
-          style="--bg-image: url('./assets/images/lime5.jpg');">
+        <a href="reverse-engineering.html" class="capability-card" id="cap-1" style="--bg-image: url('./assets/images/proto1.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">02 / 04</div>
-          <div class="capability-card__content">
-            <span class="capability-card__eyebrow">Mobility</span>
-            <h3 class="capability-card__title text-gradient">Hyperscooter Design</h3>
-            <p class="capability-card__desc">140 km/h performance achieved through custom VESC logic and thermal
-              optimisation.</p>
-            <span class="capability-card__link">See the G30 Flagship <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-
-        <a href="reverse-engineering.html" class="capability-card" id="cap-2"
-          style="--bg-image: url('./assets/images/proto1.jpg');">
-          <div class="capability-card__bg"></div>
-          <div class="capability-card__scrim-top"></div>
-          <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">03 / 04</div>
+          <div class="capability-card__counter">02 / 07</div>
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">Security Research</span>
             <h3 class="capability-card__title text-gradient">Reverse engineering</h3>
@@ -1257,17 +1247,68 @@
           </div>
         </a>
 
-        <a href="pcb-design.html" class="capability-card" id="cap-3"
-          style="--bg-image: url('./assets/images/pcb1.jpg');">
+        <a href="embedded-tooling.html" class="capability-card" id="cap-2" style="--bg-image: url('./assets/images/proto2.jpg');">
           <div class="capability-card__bg"></div>
           <div class="capability-card__scrim-top"></div>
           <div class="capability-card__scrim"></div>
-          <div class="capability-card__counter">04 / 04</div>
+          <div class="capability-card__counter">03 / 07</div>
+          <div class="capability-card__content">
+            <span class="capability-card__eyebrow">iOS Security · Open Source</span>
+            <h3 class="capability-card__title text-gradient">iOS Security Tooling</h3>
+            <p class="capability-card__desc">A 64-bit iBoot patcher, an Astris probe patcher and an SSH ramdisk for iPhone 15 Plus. Built for researchers, public on GitHub.</p>
+            <span class="capability-card__link">View the repos <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="battery.html" class="capability-card" id="cap-3" style="--bg-image: url('./assets/images/batt1.jpg');">
+          <div class="capability-card__bg"></div>
+          <div class="capability-card__scrim-top"></div>
+          <div class="capability-card__scrim"></div>
+          <div class="capability-card__counter">04 / 07</div>
+          <div class="capability-card__content">
+            <span class="capability-card__eyebrow">Energy Systems</span>
+            <h3 class="capability-card__title text-gradient">Battery Building</h3>
+            <p class="capability-card__desc">40S+ high-discharge packs engineered for hyperscooters and DIY EV projects.</p>
+            <span class="capability-card__link">View Engineering Process <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="hyperscooters.html" class="capability-card" id="cap-4" style="--bg-image: url('./assets/images/lime5.jpg');">
+          <div class="capability-card__bg"></div>
+          <div class="capability-card__scrim-top"></div>
+          <div class="capability-card__scrim"></div>
+          <div class="capability-card__counter">05 / 07</div>
+          <div class="capability-card__content">
+            <span class="capability-card__eyebrow">Mobility</span>
+            <h3 class="capability-card__title text-gradient">Hyperscooter Design</h3>
+            <p class="capability-card__desc">140 km/h performance achieved through custom VESC logic and thermal optimisation.</p>
+            <span class="capability-card__link">See the G30 Flagship <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="pcb-design.html" class="capability-card" id="cap-5" style="--bg-image: url('./assets/images/pcb1.jpg');">
+          <div class="capability-card__bg"></div>
+          <div class="capability-card__scrim-top"></div>
+          <div class="capability-card__scrim"></div>
+          <div class="capability-card__counter">06 / 07</div>
           <div class="capability-card__content">
             <span class="capability-card__eyebrow">Hardware</span>
             <h3 class="capability-card__title text-gradient">PCB Design</h3>
             <p class="capability-card__desc">Custom printed circuit board layouts for hyperscooters and EV projects.</p>
             <span class="capability-card__link">See the PCB Work <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="hackintosh.html" class="capability-card" id="cap-6" style="--bg-image: url('./assets/images/headerhack.jpg');">
+          <div class="capability-card__bg"></div>
+          <div class="capability-card__scrim-top"></div>
+          <div class="capability-card__scrim"></div>
+          <div class="capability-card__counter">07 / 07</div>
+          <div class="capability-card__content">
+            <span class="capability-card__eyebrow">OpenCore · AMD · macOS</span>
+            <h3 class="capability-card__title text-gradient">Hackintosh Engineering</h3>
+            <p class="capability-card__desc">Ryzen 9 5950X and RX 6750 XT running native macOS: custom EFI from scratch, ACPI hot-patches and kexts for a daily driver.</p>
+            <span class="capability-card__link">View the build <span aria-hidden="true">→</span></span>
           </div>
         </a>
 
@@ -1278,37 +1319,10 @@
 
     <section class="secondary-section">
       <div class="secondary-section__header reveal">
-        <h2 class="text-gradient">More Work</h2>
+        <h2 class="text-gradient">In Progress</h2>
       </div>
       <div class="secondary-grid">
-        <a href="hackintosh.html" class="glass-tile reveal">
-          <div class="glass-tile__preview" style="background-image: url('assets/images/windowonly.png');"></div>
-          <div class="glass-tile__body">
-            <div class="glass-tile__eyebrow">OpenCore · AMD · macOS</div>
-            <h4 class="glass-tile__title">Hackintosh Engineering</h4>
-            <p class="glass-tile__desc">AMD Ryzen 5950X and RX 6750 XT running native macOS — custom EFI from scratch, ACPI hot-patches, and kexts built for a daily-driver machine. Geekbench results on the build page.</p>
-            <span class="glass-tile__cta">View build &rarr;</span>
-          </div>
-        </a>
-        <a href="embedded-tooling.html" class="glass-tile reveal reveal--stagger-1">
-          <div class="glass-tile__preview" style="background-image: url('assets/images/proto2.jpg'); background-position: center;"></div>
-          <div class="glass-tile__body">
-            <div class="glass-tile__eyebrow">iOS Security Research · Open Source</div>
-            <h4 class="glass-tile__title">iOS Security Tooling</h4>
-            <p class="glass-tile__desc">Three open-source tools for low-level iOS access: 64-bit iBoot patcher, Astris probe patcher, and an SSH ramdisk for iPhone 15 Plus. Built for researchers — public on GitHub.</p>
-            <span class="glass-tile__cta">View repos &rarr;</span>
-          </div>
-        </a>
-        <a href="https://github.com/dssoftx/tinyrv32e" target="_blank" rel="noopener" class="glass-tile reveal reveal--stagger-2">
-          <div class="glass-tile__preview glass-tile__preview--code" aria-hidden="true"><span>tt_um_dssoftx_tinyrv32e</span></div>
-          <div class="glass-tile__body">
-            <div class="glass-tile__eyebrow">RISC-V · Tiny Tapeout · GF180MCU</div>
-            <h4 class="glass-tile__title">tinyrv32e — Own Silicon</h4>
-            <p class="glass-tile__desc">A multi-cycle RV32E CPU core designed from scratch, with program and data in external SPI flash and PSRAM. Submitted to Tiny Tapeout GF 26c on a 2×2 tile slot, sponsored by SwissChips (ETH Zürich).</p>
-            <span class="glass-tile__cta">View on GitHub &rarr;</span>
-          </div>
-        </a>
-        <div class="glass-tile reveal reveal--stagger-3">
+        <div class="glass-tile reveal">
           <div class="glass-tile__preview glass-tile__preview--code" aria-hidden="true"><span>XC7A35T · PCIe · M.2</span></div>
           <div class="glass-tile__body">
             <div class="glass-tile__eyebrow">FPGA · PCIe · In progress</div>
